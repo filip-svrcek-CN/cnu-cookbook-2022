@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Container, Spinner, Alert } from 'reactstrap';
+import { Container, Spinner, Alert, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 import { api } from '../api';
 import { RecipesList } from '../components/RecipesList';
@@ -48,6 +49,9 @@ export function RecipeListPage() {
         onChange={handleSearchInputChange}
         value={searchValue}
       />
+      <Link to={`/novy-recept`}>
+        <Button block color="primary" style={{ marginBottom: "12px" }}>Nový recept</Button>
+      </Link>
       {isLoading && <Spinner />}
       {hasError && <Alert color="danger">Vyskytla se chyba</Alert>}
       <RecipesList recipes={filteredRecipes} />
