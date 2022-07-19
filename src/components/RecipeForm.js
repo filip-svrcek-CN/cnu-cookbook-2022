@@ -3,6 +3,7 @@ import { Form, Input, Col, FormGroup, Label, Button, Alert, Row } from "reactstr
 
 import { api } from "../api";
 import { BasicInfo } from "./BasicInfo";
+import { IngredientsForm } from "./IngredientsForm";
 
 export function RecipeForm(initialData) {
   const [isSuccess, setIsSuccess] = useState(false);
@@ -12,16 +13,22 @@ export function RecipeForm(initialData) {
   const [title, setTitle] = useState(initialData.title);
   const [data, setData] = useState(initialData);
   const [basicInfoData, setBasicInfoData] = useState({});
+  const [ingredientsData, setIngredients] = useState([]);
 
   useEffect(() => {
     setData({
       title: title,
-      ...basicInfoData
+      ...basicInfoData,
+      ingredients: ingredientsData
     });
-  }, [title, basicInfoData]);
+  }, [title, basicInfoData, ingredientsData]);
 
   const getBasicInfo = (basicInfoData) => {
     setBasicInfoData({ ...basicInfoData })
+  }
+
+  const getIngredients = (ingredientsData) => {
+    setIngredients(ingredientsData);
   }
 
   const handleSubmit = (event) => {
@@ -34,8 +41,8 @@ export function RecipeForm(initialData) {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
-      {!isLoading && <Button block color="primary" style={{ margin: "12px 0px 12px 0px" }}>Uložit recept</Button>}
+    <Form>
+      {!isLoading && <Button block color="primary" style={{ margin: "12px 0px 12px 0px" }} onClick={handleSubmit}>Uložit recept</Button>}
       {isLoading && <Button block color="primary" style={{ margin: "12px 0px 12px 0px" }}>Ukládání receptu...</Button>}
       {isSuccess && <Alert color="success">Recept úspěšně uložen!</Alert>}
       {!isSuccess && hasError && <Alert color="danger">Uložení nebylo úspěšné!</Alert>}
@@ -60,8 +67,7 @@ export function RecipeForm(initialData) {
           <BasicInfo getBasicInfo={getBasicInfo} initialData={initialData} />
         </Col>
         <Col md={4} sm={6} xs={12}>
-          <h3>Ingredience</h3>
-          <p>...work in progress</p>
+          <IngredientsForm getIngredients={getIngredients} initialData={initialData} />
         </Col>
         <Col md={4} sm={6} xs={12}>
           <h3>Postup přípravy</h3>

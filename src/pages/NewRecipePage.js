@@ -6,7 +6,7 @@ export function NewRecipePage() {
   return (
     <Container>
       <h1>Nový recept</h1>
-      <RecipeForm title={''} preparationTime={''} sideDish={''} servingCount={''} />
+      <RecipeForm title={''} preparationTime={''} sideDish={''} servingCount={''} ingredients={[]} />
     </Container>
   )
 }
