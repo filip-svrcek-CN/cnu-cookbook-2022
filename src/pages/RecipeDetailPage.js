@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Spinner, Alert, Row, Col, List } from 'reactstrap';
+import { Container, Spinner, Alert, Row, Col, List, Button } from 'reactstrap';
 
 import { api } from '../api';
 
@@ -48,6 +48,10 @@ export function RecipeDetailPage() {
   return (
     <Container>
       <h1>{title}</h1>
+      <div className='receptDetailButtons'>
+        <Button color="primary" style={{ marginRight: "5px" }}>Upravit</Button>
+        <Button color="danger">Smazat</Button>
+      </div>
       <Row>
         <Col lg={4}>
           <h5>{preparationTime} min</h5>

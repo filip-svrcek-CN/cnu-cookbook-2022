@@ -1,0 +1,15 @@
+.receptDetailButtons {
+  display: flex;
+  flex: 1 1 auto;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+/* @media only screen and (max-width: 990px) {
+  .receptDetailButtons {
+    display: flex;
+    flex: 1 1 auto;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+  }
+} */
