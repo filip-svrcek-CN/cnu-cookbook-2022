@@ -5,7 +5,7 @@ import { api } from "../api";
 import { BasicInfo } from "./BasicInfo";
 import { IngredientsForm } from "./IngredientsForm";
 
-export function RecipeForm(initialData) {
+export function RecipeForm({ initialData }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
