@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Container, Spinner, Alert, Row, Col, List, Button } from 'reactstrap';
+import { Link, useParams } from 'react-router-dom';
+import { Container, Spinner, Alert, Row, Col, List, Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'reactstrap';
 
 import { api } from '../api';
 
@@ -9,6 +9,10 @@ export function RecipeDetailPage() {
   const [recipe, setRecipe] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [isLoadingDelete, setIsLoadingDelete] = useState(false);
+  const [hasErrorDelete, setHasErrorDelete] = useState(false);
+  const [isSuccessDelete, setIsSuccessDelete] = useState(false);
 
   useEffect(
     () => {
@@ -43,14 +47,41 @@ export function RecipeDetailPage() {
     return null;
   }
 
+  const handleDeleteRecipe = () => {
+    setHasErrorDelete(false);
+    setIsLoadingDelete(true);
+    api.delete(`/recipes/${recipe._id}`).then(
+      () => {
+        setIsSuccessDelete(true);
+      }
+    )
+      .catch(
+        () => {
+          setHasErrorDelete(true);
+        }
+      )
+      .finally(
+        () => {
+          setIsLoadingDelete(false);
+        }
+      );
+  };
+
+  const toggleModal = () => {
+    setHasErrorDelete(false);
+    setModal(!modal);
+  }
+
   const { title, preparationTime, ingredients, directions } = recipe;
 
   return (
     <Container>
       <h1>{title}</h1>
       <div className='receptDetailButtons'>
-        <Button color="primary" style={{ marginRight: "5px" }}>Upravit</Button>
-        <Button color="danger">Smazat</Button>
+        <Link to={`/upravit-recept/${slug}`}>
+          <Button color="primary" style={{ marginRight: "5px" }}>Upravit</Button>
+        </Link>
+        <Button color="danger" onClick={toggleModal}>Smazat</Button>
       </div>
       <Row>
         <Col lg={4}>
@@ -67,6 +98,19 @@ export function RecipeDetailPage() {
           <p>{directions}</p>
         </Col>
       </Row>
-    </Container>
+      <Modal isOpen={modal}>
+        <ModalHeader>Opravdu chcete smazat recept?</ModalHeader>
+        <ModalBody>
+          {isLoadingDelete && <Spinner />}
+          {!isSuccessDelete && hasErrorDelete && <Alert color="danger">Smazání nebylo úspěšné!</Alert>}
+          {isSuccessDelete && <Alert color="success">Recept úspěšně smazán!</Alert>}
+        </ModalBody>
+        <ModalFooter>
+          {!isSuccessDelete && <Button style={{ width: "80px" }} color="danger" onClick={handleDeleteRecipe}>Smazat</Button>}
+          {!isSuccessDelete && <Button color="secondary" onClick={toggleModal}>Zrušit</Button>}
+          {isSuccessDelete && <Link to={"/"}><Button color="primary" onClick={toggleModal}>Ok</Button></Link>}
+        </ModalFooter>
+      </Modal>
+    </Container >
   );
 }
