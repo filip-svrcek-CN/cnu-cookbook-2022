@@ -9,7 +9,7 @@ export function RecipeCard(props) {
   const [navigateToDetail, setNavigateToDetail] = useState(false);
 
   return (
-    <Card className="h-100" onClick={() => setNavigateToDetail(true)}>
+    <Card className="h-100 recipeCard" onClick={() => setNavigateToDetail(true)}>
       {navigateToDetail && <Navigate to={`/recipe/${slug}`} />}
       <CardImg src={placeholder} alt="Preview" />
       <CardBody>
