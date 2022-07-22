@@ -16,11 +16,16 @@ export function RecipeForm({ initialData }) {
   const [ingredientsData, setIngredients] = useState([]);
 
   useEffect(() => {
-    setData({
+    const newData = {
       title: title,
       ...basicInfoData,
       ingredients: ingredientsData
+    }
+    setData({
+      ...initialData,
+      ...newData
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title, basicInfoData, ingredientsData]);
 
   const getBasicInfo = (basicInfoData) => {
@@ -33,8 +38,9 @@ export function RecipeForm({ initialData }) {
 
   const handleSubmit = (event) => {
     setIsLoading(true);
+    Object.keys(data).forEach(key => data[key] === '' && delete data[key]);
     event.preventDefault();
-    api.post(`/recipes`, data)
+    api.post(`/recipes/${initialData._id}`, data)
       .then(() => { setIsSuccess(true) })
       .catch(() => { setHasError(true) })
       .finally(() => { setIsLoading(false) });

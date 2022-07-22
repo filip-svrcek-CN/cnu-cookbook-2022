@@ -11,6 +11,7 @@ export function NewRecipePage() {
     "sideDish": "",
     "directions": "",
     "ingredients": [],
+    "_id": ""
   }
 
   return (

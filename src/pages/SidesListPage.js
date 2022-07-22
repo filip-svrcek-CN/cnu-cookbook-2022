@@ -13,7 +13,7 @@ export function SidesListPage() {
       setIsLoading(true);
       api.get('/recipes')
         .then((response) => setRecipes(response.data))
-        .catch(() => setHasError(true), (error) => { console.log("error", error) })
+        .catch(() => setHasError(true))
         .finally(() => setIsLoading(false));
     }, []
   );
