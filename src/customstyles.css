@@ -19,3 +19,10 @@
 .recipeCard:hover > div {
   background-color: rgb(229, 229, 229);
 }
+.sortRecipeList {
+  display: flex;
+  flex: 1 1 auto;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}

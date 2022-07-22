@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container, Spinner, Alert, Button } from 'reactstrap';
+import { Container, Spinner, Alert, Button, Input, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 import { api } from '../api';
@@ -11,6 +11,7 @@ export function RecipeListPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  const [sortBy, setSortBy] = useState("alphabetical");
 
   useEffect(
     () => {
@@ -44,14 +45,32 @@ export function RecipeListPage() {
   return (
     <Container>
       <h1>Recepty</h1>
+      <Link to={`/novy-recept`}>
+        <Button block color="primary" style={{ marginBottom: "12px" }}>Nový recept</Button>
+      </Link>
       <SearchInput
         className="mb-4"
         onChange={handleSearchInputChange}
         value={searchValue}
       />
-      <Link to={`/novy-recept`}>
-        <Button block color="primary" style={{ marginBottom: "12px" }}>Nový recept</Button>
-      </Link>
+      <div className="sortRecipeList">
+        <Label style={{ margin: "0px 10px 0px 0px", paddingTop: "7px" }}>Seřadit: </Label>
+        <Input
+          style={{ width: "170px" }}
+          id="sort"
+          name="sort"
+          type="select"
+          value={sortBy}
+          onChange={(event) => setSortBy(event.target.value)}
+        >
+          <option value="alphabetical">
+            Abecedně
+          </option>
+          <option value="preparationTime">
+            Čas na přípravu
+          </option>
+        </Input>
+      </div>
       {isLoading && <Spinner />}
       {hasError && <Alert color="danger">Vyskytla se chyba</Alert>}
       <RecipesList recipes={filteredRecipes} />
