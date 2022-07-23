@@ -7,9 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { api } from '../api';
 
 export function DeleteRecipeModal({ getModalState, recipeId }) {
-  const [isLoadingDelete, setIsLoadingDelete] = useState(false);
-  const [hasErrorDelete, setHasErrorDelete] = useState(false);
-  const [isSuccessDelete, setIsSuccessDelete] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [modalState, setModalState] = useState(true);
 
   useEffect(() => {
@@ -18,22 +18,22 @@ export function DeleteRecipeModal({ getModalState, recipeId }) {
   }, [modalState])
 
   const handleDeleteRecipe = () => {
-    setHasErrorDelete(false);
-    setIsLoadingDelete(true);
+    setHasError(false);
+    setIsLoading(true);
     api.delete(`/recipes/${recipeId}`).then(
       () => {
-        setIsSuccessDelete(true);
+        setIsSuccess(true);
         notify();
       }
     )
       .catch(
         () => {
-          setHasErrorDelete(true);
+          setHasError(true);
         }
       )
       .finally(
         () => {
-          setIsLoadingDelete(false);
+          setIsLoading(false);
         }
       );
   };
@@ -45,13 +45,13 @@ export function DeleteRecipeModal({ getModalState, recipeId }) {
       <ModalHeader>Smazání receptu</ModalHeader>
       <ModalBody>
         <div>Opravdu chcete smazat recept?</div>
-        {isLoadingDelete && <Spinner style={{ margin: "10px 0px 0px 0px" }} />}
-        {!isSuccessDelete && hasErrorDelete && <Alert style={{ margin: "10px 0px 0px 0px" }} color="danger">Smazání nebylo úspěšné!</Alert>}
+        {isLoading && <Spinner style={{ margin: "10px 0px 0px 0px" }} />}
+        {!isSuccess && hasError && <Alert style={{ margin: "10px 0px 0px 0px" }} color="danger">Smazání nebylo úspěšné!</Alert>}
       </ModalBody>
       <ModalFooter>
-        {!isSuccessDelete && <Button style={{ width: "80px" }} color="danger" onClick={handleDeleteRecipe}>Smazat</Button>}
-        {!isSuccessDelete && <Button color="secondary" onClick={() => setModalState(!modalState)}>Zrušit</Button>}
-        {isSuccessDelete && <Navigate to="/" />}
+        {!isSuccess && <Button style={{ width: "80px" }} color="danger" onClick={handleDeleteRecipe}>Smazat</Button>}
+        {!isSuccess && <Button color="secondary" onClick={() => setModalState(!modalState)}>Zrušit</Button>}
+        {isSuccess && <Navigate to="/" />}
       </ModalFooter>
     </Modal>
   )

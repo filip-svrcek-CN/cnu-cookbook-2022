@@ -14,14 +14,12 @@ export function IngredientsForm({ getIngredients, initialData }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ingredientsList]);
 
-  const handleDeleteItem = id => {
-    setIngredientsList(ingredientsList.filter(({ _id }) => {
-      return _id !== id;
-    }));
+  const handleDeleteItem = key => {
+    setIngredientsList(ingredientsList.filter(({ _id, customId }) => _id + customId !== key));
   };
 
   const handleAddItem = () => {
-    let newIngredient = {
+    const newIngredient = {
       customId: uuid(),
       amount: ingredientAmount,
       amountUnit: ingredientUnit,
@@ -44,14 +42,15 @@ export function IngredientsForm({ getIngredients, initialData }) {
     setIngredientGroupName('');
   };
 
-  const IngredientsListItems = () => {
+  function IngredientsListItems() {
     return (
       <div style={{ marginBottom: "15px" }}>
         <ListGroup>
           {ingredientsList.map(({ name, amount, amountUnit, _id, customId, isGroup }) => {
+            const key = _id + customId;
             return (
-              <ListGroupItem key={_id + customId} style={isGroup ? { backgroundColor: "lightgray", fontWeight: "bold" } : null}>
-                <Button close type="button" style={{ marginRight: "10px" }} onClick={() => handleDeleteItem(_id)}></Button>{name} {amount} {amountUnit}
+              <ListGroupItem key={key} style={isGroup ? { backgroundColor: "lightgray", fontWeight: "bold" } : null}>
+                <Button close type="button" style={{ marginRight: "10px" }} onClick={() => handleDeleteItem(key)}></Button>{name} {amount} {amountUnit}
               </ListGroupItem>
             )
           })}

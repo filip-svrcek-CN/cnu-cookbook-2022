@@ -29,8 +29,8 @@ export function SidesListPage() {
   }
 
   function SideDishes() {
-    const filteredDefined = recipes.filter(({ sideDish }) => { return typeof sideDish !== "undefined" });
-    const filteredUnique = filteredDefined.map(item => { return item.sideDish })
+    const recipesWithSideDish = recipes.filter(({ sideDish }) => !!sideDish);
+    const filteredUnique = recipesWithSideDish.map(item => item.sideDish)
       //join multi-option sidedishes
       .join(", ").replace(/ \//g, ',').split(', ')
       .filter((value, index, self) => self.indexOf(value) === index);
@@ -44,7 +44,7 @@ export function SidesListPage() {
     })
   }
 
-  const SideDishesTable = function () {
+  function SideDishesTable() {
     return (
       <Table size="">
         <thead>

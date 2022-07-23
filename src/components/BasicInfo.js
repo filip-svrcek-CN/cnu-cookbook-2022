@@ -8,7 +8,7 @@ export function BasicInfo({ getBasicInfo, initialData }) {
   const [sideDish, setSideDish] = useState(initialData.sideDish);
 
   useEffect(() => {
-    const data = { preparationTime: preparationTime, servingCount: servingCount, sideDish: sideDish }
+    const data = { preparationTime, servingCount, sideDish }
     getBasicInfo(data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preparationTime, servingCount, sideDish])
