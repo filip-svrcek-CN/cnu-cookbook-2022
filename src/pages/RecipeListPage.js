@@ -52,7 +52,7 @@ export function RecipeListPage() {
   }
 
   const filteredRecipes = recipes.filter(({ title }) => {
-    return title.toLowerCase().includes(searchValue.toLowerCase());
+    return format(title).includes(format(searchValue));
   })
 
   const handleSearchInputChange = (event) => setSearchValue(event.target.value);
