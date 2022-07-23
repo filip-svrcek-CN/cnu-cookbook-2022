@@ -36,6 +36,21 @@ export function RecipeListPage() {
     []
   );
 
+  const format = item => item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  if (sortBy === "preparationTime") {
+    recipes.forEach((item, index) => {
+      if (typeof item.preparationTime === "undefined") {
+        const removedItem = recipes.splice(index, 1);
+        recipes.push(...removedItem);
+      }
+    })
+    recipes.sort((a, b) => a.preparationTime - b.preparationTime);
+  }
+  else if (sortBy === "alphabetical") {
+    recipes.sort((a, b) =>
+      format(a.title) > format(b.title) ? 1 : format(a.title) < format(b.title) ? -1 : 0)
+  }
+
   const filteredRecipes = recipes.filter(({ title }) => {
     return title.toLowerCase().includes(searchValue.toLowerCase());
   })
