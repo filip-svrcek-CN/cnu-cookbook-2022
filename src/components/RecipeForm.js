@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Form, FormFeedback, Input, Col, FormGroup, Label, Button, Alert, Row } from "reactstrap";
 
 import { api } from "../api";
-import { BasicInfo } from "./BasicInfo";
+import { BasicInfo } from "./BasicInfoForm";
 import { DirectionsForm } from "./DirectionsForm";
 import { DirectionsList } from "./DirectionsList";
 import { IngredientsForm } from "./IngredientsForm";
