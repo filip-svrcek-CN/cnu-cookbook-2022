@@ -1,56 +1,73 @@
-import { useEffect, useState } from "react";
-import { Input, FormGroup, Label, InputGroupText, InputGroup } from "reactstrap";
+import { useEffect, useState } from 'react';
+import {
+  Input,
+  FormGroup,
+  Label,
+  InputGroupText,
+  InputGroup,
+} from 'reactstrap';
 
-export function BasicInfo({ updateBasicInfo, preparationTime, sideDish, servingCount }) {
-  const [basicInfoFormData, setBasicInfoFormData] = useState({ preparationTime, sideDish, servingCount });
+export function BasicInfo({
+  updateBasicInfo,
+  preparationTime,
+  sideDish,
+  servingCount,
+}) {
+  const [basicInfoFormData, setBasicInfoFormData] = useState({
+    preparationTime,
+    sideDish,
+    servingCount,
+  });
 
   useEffect(() => {
     updateBasicInfo(basicInfoFormData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [basicInfoFormData])
+  }, [basicInfoFormData]);
 
   return (
     <div>
       <h3>Základní údaje</h3>
       <FormGroup>
-        <Label>
-          Příprava
-        </Label>
+        <Label>Příprava</Label>
         <InputGroup>
           <Input
             id="preparationTime"
             name="preparationTime"
             type="number"
-            onChange={(event) => { const preparationTime = event.target.value; setBasicInfoFormData({ ...basicInfoFormData, preparationTime }) }}
-            value={basicInfoFormData.preparationTime || ""}
+            onChange={(event) => {
+              const preparationTime = event.target.value;
+              setBasicInfoFormData({ ...basicInfoFormData, preparationTime });
+            }}
+            value={basicInfoFormData.preparationTime || ''}
           />
-          <InputGroupText>
-            min.
-          </InputGroupText>
+          <InputGroupText>min.</InputGroupText>
         </InputGroup>
       </FormGroup>
       <FormGroup>
-        <Label>
-          Počet porcí
-        </Label>
+        <Label>Počet porcí</Label>
         <Input
           id="servingCount"
           name="servingCount"
           type="number"
-          onChange={(event) => { const servingCount = event.target.value; setBasicInfoFormData({ ...basicInfoFormData, servingCount }) }}
-          value={basicInfoFormData.servingCount || ""}
+          onChange={(event) => {
+            const servingCount = event.target.value;
+            setBasicInfoFormData({ ...basicInfoFormData, servingCount });
+          }}
+          value={basicInfoFormData.servingCount || ''}
         />
       </FormGroup>
       <FormGroup>
-        <Label>
-          Příloha
-        </Label>
+        <Label>Příloha</Label>
         <Input
           id="sideDishes"
           name="sideDishes"
-          onChange={(event) => { const sideDish = event.target.value; setBasicInfoFormData({ ...basicInfoFormData, sideDish }) }}
-          value={basicInfoFormData.sideDish || ""} />
+          onChange={(event) => {
+            const sideDish = event.target.value;
+            setBasicInfoFormData({ ...basicInfoFormData, sideDish });
+          }}
+          value={basicInfoFormData.sideDish || ''}
+        />
       </FormGroup>
     </div>
-  )
+  );
 }
