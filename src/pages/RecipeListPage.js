@@ -86,7 +86,7 @@ export function RecipeListPage() {
           </option>
         </Input>
       </div>
-      {isLoading && <Spinner />}
+      {isLoading && <Spinner style={{ marginBottom: "30px" }} />}
       {hasError && <Alert color="danger">Vyskytla se chyba</Alert>}
       <RecipesList recipes={filteredRecipes} />
     </Container>
