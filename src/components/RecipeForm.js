@@ -3,6 +3,8 @@ import { Form, FormFeedback, Input, Col, FormGroup, Label, Button, Alert, Row } 
 
 import { api } from "../api";
 import { BasicInfo } from "./BasicInfo";
+import { DirectionsForm } from "./DirectionsForm";
+import { DirectionsList } from "./DirectionsList";
 import { IngredientsForm } from "./IngredientsForm";
 
 export function RecipeForm({ initialData }) {
@@ -12,6 +14,7 @@ export function RecipeForm({ initialData }) {
   const [invalidForm, setInvalidForm] = useState(false);
 
   const [title, setTitle] = useState(initialData.title);
+  const [directions, setDirections] = useState(initialData.directions);
   const [data, setData] = useState(initialData);
   const [basicInfoData, setBasicInfoData] = useState({});
   const [ingredientsData, setIngredients] = useState([]);
@@ -19,8 +22,9 @@ export function RecipeForm({ initialData }) {
   useEffect(() => {
     const newData = {
       title,
+      directions,
       ...basicInfoData,
-      ingredients: ingredientsData
+      ingredients: ingredientsData,
     }
     setData({
       ...initialData,
@@ -30,11 +34,15 @@ export function RecipeForm({ initialData }) {
   }, [title, basicInfoData, ingredientsData]);
 
   const getBasicInfo = (basicInfoData) => {
-    setBasicInfoData({ ...basicInfoData })
+    setBasicInfoData({ ...basicInfoData });
   }
 
   const getIngredients = (ingredientsData) => {
     setIngredients(ingredientsData);
+  }
+
+  const getDirections = (directionsData) => {
+    setDirections(directionsData);
   }
 
   const handleSubmit = (event) => {
@@ -78,15 +86,21 @@ export function RecipeForm({ initialData }) {
         </Col>
       </Row>
       <Row>
-        <Col md={4} sm={6} xs={12}>
+        <Col md={3} sm={6} xs={12}>
           <BasicInfo getBasicInfo={getBasicInfo} initialData={initialData} />
         </Col>
         <Col md={4} sm={6} xs={12}>
           <IngredientsForm getIngredients={getIngredients} initialData={initialData} />
         </Col>
-        <Col md={4} sm={6} xs={12}>
+        <Col md={5} sm={6} xs={12}>
           <h3>Postup přípravy</h3>
-          <p>...work in progress</p>
+          <DirectionsForm getDirections={getDirections} directions={data.directions} />
+        </Col>
+      </Row>
+      <Row>
+        <Col md={12}>
+          <h3 style={{ marginTop: "10px" }}>Náhled na postup přípravy</h3>
+          <DirectionsList directions={directions} />
         </Col>
       </Row>
     </Form>

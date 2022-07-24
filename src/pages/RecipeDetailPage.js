@@ -4,6 +4,7 @@ import { Container, Spinner, Alert, Row, Col, List, Button } from 'reactstrap';
 
 import { api } from '../api';
 import { DeleteRecipeModal } from '../components/DeleteRecipeModal';
+import { DirectionsList } from '../components/DirectionsList';
 
 export function RecipeDetailPage() {
   const { slug } = useParams();
@@ -72,7 +73,7 @@ export function RecipeDetailPage() {
           </List>
         </Col>
         <Col lg={8}>
-          <p>{directions}</p>
+          <DirectionsList directions={directions} />
         </Col>
       </Row>
       {openModal && <DeleteRecipeModal getModalState={getModalState} recipeId={recipe._id} />}
