@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 
-export function DirectionsForm({ getDirections, directions }) {
+export function DirectionsForm({ updateDirections, directions }) {
   const [directionsData, setDirectionsData] = useState(directions);
 
   useEffect(() => {
-    getDirections(directionsData);
+    updateDirections(directionsData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [directionsData])
 

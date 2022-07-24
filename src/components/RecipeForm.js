@@ -33,15 +33,15 @@ export function RecipeForm({ initialData }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title, basicInfoData, ingredientsData]);
 
-  const getBasicInfo = (basicInfoData) => {
+  const updateBasicInfo = (basicInfoData) => {
     setBasicInfoData({ ...basicInfoData });
   }
 
-  const getIngredients = (ingredientsData) => {
+  const updateIngredients = (ingredientsData) => {
     setIngredients(ingredientsData);
   }
 
-  const getDirections = (directionsData) => {
+  const updateDirections = (directionsData) => {
     setDirections(directionsData);
   }
 
@@ -87,14 +87,14 @@ export function RecipeForm({ initialData }) {
       </Row>
       <Row>
         <Col md={3} sm={6} xs={12}>
-          <BasicInfo getBasicInfo={getBasicInfo} initialData={initialData} />
+          <BasicInfo updateBasicInfo={updateBasicInfo} initialData={initialData} />
         </Col>
         <Col md={4} sm={6} xs={12}>
-          <IngredientsForm getIngredients={getIngredients} initialData={initialData} />
+          <IngredientsForm updateIngredients={updateIngredients} initialData={initialData} />
         </Col>
         <Col md={5} sm={6} xs={12}>
           <h3>Postup přípravy</h3>
-          <DirectionsForm getDirections={getDirections} directions={data.directions} />
+          <DirectionsForm updateDirections={updateDirections} directions={data.directions} />
         </Col>
       </Row>
       <Row>

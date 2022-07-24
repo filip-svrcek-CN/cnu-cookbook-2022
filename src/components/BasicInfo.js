@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Input, FormGroup, Label, InputGroupText, InputGroup } from "reactstrap";
 
-export function BasicInfo({ getBasicInfo, initialData }) {
+export function BasicInfo({ updateBasicInfo, initialData }) {
 
   const [preparationTime, setPreparationTime] = useState(initialData.preparationTime);
   const [servingCount, setServingCount] = useState(initialData.servingCount);
@@ -9,7 +9,7 @@ export function BasicInfo({ getBasicInfo, initialData }) {
 
   useEffect(() => {
     const data = { preparationTime, servingCount, sideDish }
-    getBasicInfo(data);
+    updateBasicInfo(data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preparationTime, servingCount, sideDish])
 

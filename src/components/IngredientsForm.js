@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Input, Row, Col, FormGroup, Label, Button, InputGroup, ListGroup, ListGroupItem } from "reactstrap";
 import { v4 as uuid } from 'uuid';
 
-export function IngredientsForm({ getIngredients, initialData }) {
+export function IngredientsForm({ updateIngredients, initialData }) {
   const [ingredientsList, setIngredientsList] = useState(initialData.ingredients)
   const [ingredientAmount, setIngredientAmount] = useState('');
   const [ingredientUnit, setIngredientUnit] = useState('');
@@ -10,7 +10,7 @@ export function IngredientsForm({ getIngredients, initialData }) {
   const [ingredientGroupName, setIngredientGroupName] = useState('');
 
   useEffect(() => {
-    getIngredients(ingredientsList);
+    updateIngredients(ingredientsList);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ingredientsList]);
 
