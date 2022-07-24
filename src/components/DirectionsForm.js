@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react"
+import { Input } from "reactstrap";
 
 export function DirectionsForm({ updateDirections, directions }) {
-  const [directionsData, setDirectionsData] = useState(directions);
+  const [directionsFormData, setDirectionsFormData] = useState(directions);
 
   useEffect(() => {
-    updateDirections(directionsData);
+    updateDirections(directionsFormData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [directionsData])
+  }, [directionsFormData])
 
   return (
-    <textarea
-      onChange={(event) => setDirectionsData(event.target.value)}
+    <Input
+      onChange={(event) => setDirectionsFormData(event.target.value)}
       style={{ width: "100%" }}
+      type="textarea"
       rows={20}
-    >
-      {directionsData}</textarea>
+      value={directionsFormData}
+    />
   )
 }

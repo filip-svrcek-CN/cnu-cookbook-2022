@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { Input, Row, Col, FormGroup, Label, Button, InputGroup, ListGroup, ListGroupItem } from "reactstrap";
 import { v4 as uuid } from 'uuid';
 
-export function IngredientsForm({ updateIngredients, initialData }) {
-  const [ingredientsList, setIngredientsList] = useState(initialData.ingredients)
+export function IngredientsForm({ updateIngredients, ingredients }) {
+  const [ingredientsList, setIngredientsList] = useState(ingredients)
   const [ingredientAmount, setIngredientAmount] = useState('');
   const [ingredientUnit, setIngredientUnit] = useState('');
   const [ingredientName, setIngredientName] = useState('');
@@ -63,7 +63,7 @@ export function IngredientsForm({ updateIngredients, initialData }) {
     <div>
       <h3>Ingredience</h3>
       <IngredientsListItems />
-      <div style={{ border: "1px solid #0d6efd", padding: "10px" }}>
+      <div style={{ border: "1px solid #0d6efd", borderRadius: "0.25rem", padding: "10px" }}>
         <Row>
           <Col md={12}>
             <FormGroup>
@@ -96,7 +96,7 @@ export function IngredientsForm({ updateIngredients, initialData }) {
           </Col>
         </Row>
       </div>
-      <div style={{ border: "1px solid #0d6efd", padding: "10px", marginTop: "15px" }}>
+      <div style={{ border: "1px solid #0d6efd", borderRadius: "0.25rem", padding: "10px", marginTop: "15px" }}>
         <Col md={12}>
           <FormGroup>
             <Label>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Form, FormFeedback, Input, Col, FormGroup, Label, Button, Alert, Row } from "reactstrap";
 
 import { api } from "../api";
@@ -12,41 +12,22 @@ export function RecipeForm({ initialData }) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [invalidForm, setInvalidForm] = useState(false);
-
-  const [title, setTitle] = useState(initialData.title);
-  const [directions, setDirections] = useState(initialData.directions);
   const [data, setData] = useState(initialData);
-  const [basicInfoData, setBasicInfoData] = useState({});
-  const [ingredientsData, setIngredients] = useState([]);
 
-  useEffect(() => {
-    const newData = {
-      title,
-      directions,
-      ...basicInfoData,
-      ingredients: ingredientsData,
-    }
-    setData({
-      ...initialData,
-      ...newData
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, basicInfoData, ingredientsData]);
-
-  const updateBasicInfo = (basicInfoData) => {
-    setBasicInfoData({ ...basicInfoData });
+  const updateBasicInfo = (basicInfo) => {
+    setData({ ...data, ...basicInfo });
   }
 
-  const updateIngredients = (ingredientsData) => {
-    setIngredients(ingredientsData);
+  const updateIngredients = (ingredients) => {
+    setData({ ...data, ingredients });
   }
 
-  const updateDirections = (directionsData) => {
-    setDirections(directionsData);
+  const updateDirections = (directions) => {
+    setData({ ...data, directions });
   }
 
   const handleSubmit = (event) => {
-    if (title === "") {
+    if (data.title === "") {
       return setInvalidForm(true);
     }
     setInvalidForm(false);
@@ -74,9 +55,9 @@ export function RecipeForm({ initialData }) {
             <Input
               id="title"
               name="title"
-              onChange={(event) => { setTitle(event.target.value) }}
+              onChange={(event) => { const title = event.target.value; setData({ ...data, title }) }}
               onFocus={() => setInvalidForm(false)}
-              value={title}
+              value={data.title || ""}
               invalid={invalidForm}
             />
             <FormFeedback tooltip>
@@ -87,10 +68,10 @@ export function RecipeForm({ initialData }) {
       </Row>
       <Row>
         <Col md={3} sm={6} xs={12}>
-          <BasicInfo updateBasicInfo={updateBasicInfo} initialData={initialData} />
+          <BasicInfo updateBasicInfo={updateBasicInfo} preparationTime={data.preparationTime} sideDish={data.sideDish} servingCount={data.servingCount} />
         </Col>
         <Col md={4} sm={6} xs={12}>
-          <IngredientsForm updateIngredients={updateIngredients} initialData={initialData} />
+          <IngredientsForm updateIngredients={updateIngredients} ingredients={data.ingredients} />
         </Col>
         <Col md={5} sm={6} xs={12}>
           <h3>Postup přípravy</h3>
@@ -100,7 +81,7 @@ export function RecipeForm({ initialData }) {
       <Row>
         <Col md={12}>
           <h3 style={{ marginTop: "10px" }}>Náhled na postup přípravy</h3>
-          <DirectionsList directions={directions} />
+          <DirectionsList directions={data.directions} />
         </Col>
       </Row>
     </Form>

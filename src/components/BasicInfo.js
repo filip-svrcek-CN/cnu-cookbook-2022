@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
 import { Input, FormGroup, Label, InputGroupText, InputGroup } from "reactstrap";
 
-export function BasicInfo({ updateBasicInfo, initialData }) {
-
-  const [preparationTime, setPreparationTime] = useState(initialData.preparationTime);
-  const [servingCount, setServingCount] = useState(initialData.servingCount);
-  const [sideDish, setSideDish] = useState(initialData.sideDish);
+export function BasicInfo({ updateBasicInfo, preparationTime, sideDish, servingCount }) {
+  const [basicInfoFormData, setBasicInfoFormData] = useState({ preparationTime, sideDish, servingCount });
 
   useEffect(() => {
-    const data = { preparationTime, servingCount, sideDish }
-    updateBasicInfo(data);
+    updateBasicInfo(basicInfoFormData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [preparationTime, servingCount, sideDish])
+  }, [basicInfoFormData])
 
   return (
     <div>
@@ -25,8 +21,8 @@ export function BasicInfo({ updateBasicInfo, initialData }) {
             id="preparationTime"
             name="preparationTime"
             type="number"
-            onChange={(event) => { setPreparationTime(event.target.value) }}
-            value={preparationTime}
+            onChange={(event) => { const preparationTime = event.target.value; setBasicInfoFormData({ ...basicInfoFormData, preparationTime }) }}
+            value={basicInfoFormData.preparationTime || ""}
           />
           <InputGroupText>
             min.
@@ -41,8 +37,8 @@ export function BasicInfo({ updateBasicInfo, initialData }) {
           id="servingCount"
           name="servingCount"
           type="number"
-          onChange={(event) => { setServingCount(event.target.value) }}
-          value={servingCount}
+          onChange={(event) => { const servingCount = event.target.value; setBasicInfoFormData({ ...basicInfoFormData, servingCount }) }}
+          value={basicInfoFormData.servingCount || ""}
         />
       </FormGroup>
       <FormGroup>
@@ -52,8 +48,8 @@ export function BasicInfo({ updateBasicInfo, initialData }) {
         <Input
           id="sideDishes"
           name="sideDishes"
-          onChange={(event) => { setSideDish(event.target.value) }}
-          value={sideDish} />
+          onChange={(event) => { const sideDish = event.target.value; setBasicInfoFormData({ ...basicInfoFormData, sideDish }) }}
+          value={basicInfoFormData.sideDish || ""} />
       </FormGroup>
     </div>
   )
