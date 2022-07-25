@@ -7,17 +7,8 @@ import {
   InputGroup,
 } from 'reactstrap';
 
-export function BasicInfo({
-  updateData,
-  preparationTime,
-  sideDish,
-  servingCount,
-}) {
-  const [basicInfoFormData, setBasicInfoFormData] = useState({
-    preparationTime,
-    sideDish,
-    servingCount,
-  });
+export function BasicInfo({ updateData, initialData }) {
+  const [basicInfoFormData, setBasicInfoFormData] = useState({ initialData });
 
   useEffect(() => {
     updateData(basicInfoFormData);

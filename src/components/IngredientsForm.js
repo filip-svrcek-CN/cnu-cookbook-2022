@@ -10,19 +10,19 @@ import {
 } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 
-export function IngredientsForm({ updateIngredientsList, list }) {
-  const [ingredientsList, setIngredientsList] = useState(list);
+export function IngredientsForm({ updateIngredients, initialData }) {
+  const [ingredients, setIngredients] = useState(initialData);
   const [ingredientFormData, setIngredientFormData] = useState({});
   const [groupFormData, setGroupFormData] = useState({});
 
   useEffect(() => {
-    updateIngredientsList(ingredientsList);
+    updateIngredients(ingredients);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ingredientsList]);
+  }, [ingredients]);
 
   const handleAddItem = () => {
-    setIngredientsList([
-      ...ingredientsList,
+    setIngredients([
+      ...ingredients,
       {
         ...ingredientFormData,
         customId: uuid(),
@@ -33,8 +33,8 @@ export function IngredientsForm({ updateIngredientsList, list }) {
   };
 
   const handleAddGroupItem = () => {
-    setIngredientsList([
-      ...ingredientsList,
+    setIngredients([
+      ...ingredients,
       {
         ...groupFormData,
         customId: uuid(),

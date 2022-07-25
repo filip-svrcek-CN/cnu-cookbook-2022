@@ -1,24 +1,15 @@
-import { useEffect, useState } from 'react';
 import { Button, ListGroup, ListGroupItem } from 'reactstrap';
 
-export function IngredientsList({ updateIngredientsList, list }) {
-  const [ingredientsList, setIngredientsList] = useState(list);
-
-  useEffect(() => {
-    updateIngredientsList(ingredientsList);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ingredientsList]);
-
+export function IngredientsList({ updateIngredients, ingredients }) {
   const handleDeleteItem = (key) => {
-    setIngredientsList(
-      ingredientsList.filter(({ _id, customId }) => _id + customId !== key),
+    updateIngredients(
+      ingredients.filter(({ _id, customId }) => _id + customId !== key),
     );
   };
-
   return (
     <div style={{ marginBottom: '15px' }}>
       <ListGroup>
-        {ingredientsList.map(
+        {ingredients.map(
           ({ name, amount, amountUnit, _id, customId, isGroup }) => {
             const key = _id + customId;
             return (
