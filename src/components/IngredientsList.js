@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 
-export function IngredientsForm({ updateIngredients, ingredients }) {
+export function IngredientsList({ updateIngredients, ingredients }) {
   const [ingredientsList, setIngredientsList] = useState(ingredients);
   const [ingredientAmount, setIngredientAmount] = useState('');
   const [ingredientUnit, setIngredientUnit] = useState('');

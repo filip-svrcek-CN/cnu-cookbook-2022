@@ -15,7 +15,7 @@ import { api } from '../api';
 import { BasicInfo } from './BasicInfoForm';
 import { DirectionsForm } from './DirectionsForm';
 import { DirectionsList } from './DirectionsList';
-import { IngredientsForm } from './IngredientsForm';
+import { IngredientsList } from './IngredientsList';
 
 export function RecipeForm({ initialData }) {
   const [isSuccess, setIsSuccess] = useState(false);
@@ -112,7 +112,7 @@ export function RecipeForm({ initialData }) {
           />
         </Col>
         <Col md={4} sm={6} xs={12}>
-          <IngredientsForm
+          <IngredientsList
             updateIngredients={updateIngredients}
             ingredients={data.ingredients}
           />
