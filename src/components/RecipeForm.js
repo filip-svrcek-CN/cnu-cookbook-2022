@@ -1,21 +1,12 @@
 import { useState } from 'react';
-import {
-  Form,
-  FormFeedback,
-  Input,
-  Col,
-  FormGroup,
-  Label,
-  Button,
-  Alert,
-  Row,
-} from 'reactstrap';
+import { Form, Col, Button, Alert, Row } from 'reactstrap';
 
 import { api } from '../api';
 import { BasicInfo } from './BasicInfoForm';
 import { DirectionsForm } from './DirectionsForm';
 import { DirectionsList } from './DirectionsList';
 import { IngredientsFormParent } from './IngredientsFormParent';
+import { TitleForm } from './TitleForm';
 
 export function RecipeForm({ initialData }) {
   const [isSuccess, setIsSuccess] = useState(false);
@@ -77,21 +68,12 @@ export function RecipeForm({ initialData }) {
       )}
       <Row>
         <Col md={12}>
-          <FormGroup className="position-relative">
-            <Label>Název</Label>
-            <Input
-              id="title"
-              name="title"
-              onChange={(event) => {
-                const title = event.target.value;
-                setData({ ...data, title });
-              }}
-              onFocus={() => setInvalidForm(false)}
-              value={data.title || ''}
-              invalid={invalidForm}
-            />
-            <FormFeedback tooltip>Pole je povinné</FormFeedback>
-          </FormGroup>
+          <TitleForm
+            updateData={updateData}
+            title={data.title}
+            invalidForm={invalidForm}
+            setValid={() => setInvalidForm(false)}
+          />
         </Col>
       </Row>
       <Row>
