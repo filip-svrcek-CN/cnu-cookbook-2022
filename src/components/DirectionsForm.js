@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Input } from 'reactstrap';
 
-export function DirectionsForm({ updateDirections, directions }) {
+export function DirectionsForm({ updateData, directions }) {
   const [directionsFormData, setDirectionsFormData] = useState(directions);
 
   useEffect(() => {
-    updateDirections(directionsFormData);
+    updateData({ directions: directionsFormData });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [directionsFormData]);
 

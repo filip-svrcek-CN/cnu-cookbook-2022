@@ -15,7 +15,7 @@ import { api } from '../api';
 import { BasicInfo } from './BasicInfoForm';
 import { DirectionsForm } from './DirectionsForm';
 import { DirectionsList } from './DirectionsList';
-import { IngredientsList } from './IngredientsList';
+import { IngredientsFormParent } from './IngredientsFormParent';
 
 export function RecipeForm({ initialData }) {
   const [isSuccess, setIsSuccess] = useState(false);
@@ -24,17 +24,10 @@ export function RecipeForm({ initialData }) {
   const [invalidForm, setInvalidForm] = useState(false);
   const [data, setData] = useState(initialData);
 
-  const updateBasicInfo = (basicInfo) => {
-    setData({ ...data, ...basicInfo });
-  };
-
-  const updateIngredients = (ingredients) => {
-    setData({ ...data, ingredients });
-  };
-
-  const updateDirections = (directions) => {
-    setData({ ...data, directions });
-  };
+  const updateData = (newData) => {
+    setData({ ...data, ...newData });
+    console.log(data);
+  }
 
   const handleSubmit = (event) => {
     if (data.title === '') {
@@ -105,22 +98,22 @@ export function RecipeForm({ initialData }) {
       <Row>
         <Col md={3} sm={6} xs={12}>
           <BasicInfo
-            updateBasicInfo={updateBasicInfo}
+            updateData={updateData}
             preparationTime={data.preparationTime}
             sideDish={data.sideDish}
             servingCount={data.servingCount}
           />
         </Col>
         <Col md={4} sm={6} xs={12}>
-          <IngredientsList
-            updateIngredients={updateIngredients}
+          <IngredientsFormParent
+            updateData={updateData}
             ingredients={data.ingredients}
           />
         </Col>
         <Col md={5} sm={6} xs={12}>
           <h3>Postup přípravy</h3>
           <DirectionsForm
-            updateDirections={updateDirections}
+            updateData={updateData}
             directions={data.directions}
           />
         </Col>

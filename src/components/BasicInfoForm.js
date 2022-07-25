@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 
 export function BasicInfo({
-  updateBasicInfo,
+  updateData,
   preparationTime,
   sideDish,
   servingCount,
@@ -20,7 +20,7 @@ export function BasicInfo({
   });
 
   useEffect(() => {
-    updateBasicInfo(basicInfoFormData);
+    updateData(basicInfoFormData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [basicInfoFormData]);
 

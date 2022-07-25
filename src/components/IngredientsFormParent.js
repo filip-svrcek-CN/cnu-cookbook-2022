@@ -3,11 +3,11 @@ import { Button, ListGroup, ListGroupItem } from 'reactstrap';
 
 import { IngredientsForm } from './IngredientsForm';
 
-export function IngredientsList({ updateIngredients, ingredients }) {
+export function IngredientsFormParent({ updateData, ingredients }) {
   const [ingredientsList, setIngredientsList] = useState(ingredients);
 
   useEffect(() => {
-    updateIngredients(ingredientsList);
+    updateData({ ingredients: ingredientsList });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ingredientsList]);
 
