@@ -1,9 +1,16 @@
-import { useEffect, useState } from "react";
-import { Row, Col, FormGroup, Label, InputGroup, Input, Button } from "reactstrap";
+import { useEffect, useState } from 'react';
+import {
+  Row,
+  Col,
+  FormGroup,
+  Label,
+  InputGroup,
+  Input,
+  Button,
+} from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 
 export function IngredientsForm({ updateIngredientsList, list }) {
-
   const [ingredientsList, setIngredientsList] = useState(list);
   const [ingredientFormData, setIngredientFormData] = useState({});
   const [groupFormData, setGroupFormData] = useState({});
@@ -11,8 +18,7 @@ export function IngredientsForm({ updateIngredientsList, list }) {
   useEffect(() => {
     updateIngredientsList(ingredientsList);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ingredientsList])
-
+  }, [ingredientsList]);
 
   const handleAddItem = () => {
     setIngredientsList([
@@ -21,7 +27,8 @@ export function IngredientsForm({ updateIngredientsList, list }) {
         ...ingredientFormData,
         customId: uuid(),
         isGroup: false,
-      }]);
+      },
+    ]);
     setIngredientFormData({});
   };
 
@@ -36,16 +43,6 @@ export function IngredientsForm({ updateIngredientsList, list }) {
     ]);
     setGroupFormData({});
   };
-
-
-  // { "_id": "5c41bc18a28cb9001bb85f41", "name": "Dhál", "isGroup": true },
-  //     {
-  //       "_id": "5c41bbd5a28cb9001bb85f24",
-  //       "name": "květák",
-  //       "amount": 1,
-  //       "amountUnit": "ks",
-  //       "isGroup": false
-  //     },
 
   return (
     <div>
@@ -62,7 +59,7 @@ export function IngredientsForm({ updateIngredientsList, list }) {
               <Label>Název ingredience</Label>
               <InputGroup>
                 <Input
-                  value={ingredientFormData.name || ""}
+                  value={ingredientFormData.name || ''}
                   onChange={(event) => {
                     const name = event.target.value;
                     setIngredientFormData({ ...ingredientFormData, name });
@@ -126,5 +123,5 @@ export function IngredientsForm({ updateIngredientsList, list }) {
         </Col>
       </div>
     </div>
-  )
+  );
 }

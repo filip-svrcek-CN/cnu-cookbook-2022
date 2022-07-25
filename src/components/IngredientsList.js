@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  Button,
-  ListGroup,
-  ListGroupItem,
-} from 'reactstrap';
+import { Button, ListGroup, ListGroupItem } from 'reactstrap';
 
 import { IngredientsForm } from './IngredientsForm';
 
@@ -17,7 +13,7 @@ export function IngredientsList({ updateIngredients, ingredients }) {
 
   const updateIngredientsList = (ingredientsFormData) => {
     setIngredientsList(ingredientsFormData);
-  }
+  };
 
   const handleDeleteItem = (key) => {
     setIngredientsList(
@@ -61,7 +57,10 @@ export function IngredientsList({ updateIngredients, ingredients }) {
     <div>
       <h3>Ingredience</h3>
       <IngredientsListItems />
-      <IngredientsForm updateIngredientsList={updateIngredientsList} list={ingredientsList} />
+      <IngredientsForm
+        updateIngredientsList={updateIngredientsList}
+        list={ingredientsList}
+      />
     </div>
   );
 }
