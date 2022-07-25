@@ -26,8 +26,7 @@ export function RecipeForm({ initialData }) {
 
   const updateData = (newData) => {
     setData({ ...data, ...newData });
-    console.log(data);
-  }
+  };
 
   const handleSubmit = (event) => {
     if (data.title === '') {

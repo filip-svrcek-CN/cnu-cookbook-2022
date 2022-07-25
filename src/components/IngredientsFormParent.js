@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Button, ListGroup, ListGroupItem } from 'reactstrap';
 
 import { IngredientsForm } from './IngredientsForm';
+import { IngredientsList } from './IngredientsList';
 
 export function IngredientsFormParent({ updateData, ingredients }) {
   const [ingredientsList, setIngredientsList] = useState(ingredients);
@@ -15,48 +15,13 @@ export function IngredientsFormParent({ updateData, ingredients }) {
     setIngredientsList(ingredientsFormData);
   };
 
-  const handleDeleteItem = (key) => {
-    setIngredientsList(
-      ingredientsList.filter(({ _id, customId }) => _id + customId !== key),
-    );
-  };
-
-  function IngredientsListItems() {
-    return (
-      <div style={{ marginBottom: '15px' }}>
-        <ListGroup>
-          {ingredientsList.map(
-            ({ name, amount, amountUnit, _id, customId, isGroup }) => {
-              const key = _id + customId;
-              return (
-                <ListGroupItem
-                  key={key}
-                  style={
-                    isGroup
-                      ? { backgroundColor: 'lightgray', fontWeight: 'bold' }
-                      : null
-                  }
-                >
-                  <Button
-                    close
-                    type="button"
-                    style={{ marginRight: '10px' }}
-                    onClick={() => handleDeleteItem(key)}
-                  ></Button>
-                  {name} {amount} {amountUnit}
-                </ListGroupItem>
-              );
-            },
-          )}
-        </ListGroup>
-      </div>
-    );
-  }
-
   return (
     <div>
       <h3>Ingredience</h3>
-      <IngredientsListItems />
+      <IngredientsList
+        updateIngredientsList={updateIngredientsList}
+        list={ingredientsList}
+      />
       <IngredientsForm
         updateIngredientsList={updateIngredientsList}
         list={ingredientsList}
