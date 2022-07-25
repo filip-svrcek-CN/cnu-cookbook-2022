@@ -17,8 +17,7 @@ export function App() {
           closeOnClick
           rtl={false}
           pauseOnFocusLoss
-          pauseOnHover
-        />
+          pauseOnHover />
       </Layout>
     </Router>
   );

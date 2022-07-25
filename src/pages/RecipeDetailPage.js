@@ -13,30 +13,38 @@ export function RecipeDetailPage() {
   const [hasError, setHasError] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  useEffect(() => {
-    setIsLoading(true);
-    api
-      .get(`/recipes/${slug}`)
-      .then((response) => {
-        setRecipe(response.data);
-      })
-      .catch(() => {
-        setHasError(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [slug]);
+  useEffect(
+    () => {
+      setIsLoading(true);
+      api.get(`/recipes/${slug}`)
+        .then(
+          (response) => {
+            setRecipe(response.data);
+          }
+        )
+        .catch(
+          () => {
+            setHasError(true);
+          }
+        )
+        .finally(
+          () => {
+            setIsLoading(false);
+          }
+        );
+    },
+    [slug]
+  );
 
   const getModalState = (res) => {
-    setOpenModal(res);
-  };
+    setOpenModal(res)
+  }
 
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />
   }
   if (hasError) {
-    return <Alert color="danger">Vyskytla se chyba</Alert>;
+    return <Alert color="danger">Vyskytla se chyba</Alert>
   }
   if (!recipe) {
     return null;
@@ -47,15 +55,11 @@ export function RecipeDetailPage() {
   return (
     <Container>
       <h1>{title}</h1>
-      <div className="receptDetailButtons">
+      <div className='receptDetailButtons'>
         <Link to={`/upravit-recept/${slug}`}>
-          <Button color="primary" style={{ marginRight: '5px' }}>
-            Upravit
-          </Button>
+          <Button color="primary" style={{ marginRight: "5px" }}>Upravit</Button>
         </Link>
-        <Button color="danger" onClick={() => setOpenModal(!openModal)}>
-          Smazat
-        </Button>
+        <Button color="danger" onClick={() => setOpenModal(!openModal)}>Smazat</Button>
       </div>
       <Row>
         <Col lg={4}>
@@ -63,9 +67,7 @@ export function RecipeDetailPage() {
           <List type="unstyled">
             {ingredients.map(({ _id, name, amount, amountUnit }) => {
               return (
-                <li key={_id}>
-                  {amount} {amountUnit} {name}
-                </li>
+                <li key={_id}>{amount} {amountUnit} {name}</li>
               );
             })}
           </List>
@@ -74,12 +76,7 @@ export function RecipeDetailPage() {
           <DirectionsList directions={directions} />
         </Col>
       </Row>
-      {openModal && (
-        <DeleteRecipeModal
-          getModalState={getModalState}
-          recipeId={recipe._id}
-        />
-      )}
-    </Container>
+      {openModal && <DeleteRecipeModal getModalState={getModalState} recipeId={recipe._id} />}
+    </Container >
   );
 }

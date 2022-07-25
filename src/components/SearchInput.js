@@ -1,5 +1,12 @@
-import { Input } from 'reactstrap';
+import { Input } from 'reactstrap'
 
 export function SearchInput(props) {
-  return <Input bsSize="lg" placeholder="Vyhledat recept..." {...props} />;
+
+  return (
+    <Input
+      bsSize="lg"
+      placeholder="Vyhledat recept..."
+      {...props}
+    />
+  )
 }
