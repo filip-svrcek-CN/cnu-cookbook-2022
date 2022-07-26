@@ -1,7 +1,7 @@
 import { CardSubtitle } from 'reactstrap';
 import { BiTimeFive, BiDish } from 'react-icons/bi';
 
-export function RecipeCardDetail({ preparationTime, sideDish }) {
+export function RecipeCardDetail({ preparationTime, sideDish, fontSize }) {
   const hoursToPrepare = (prepTime) => {
     const hours = Math.floor(prepTime / 60);
     return hours > 0 ? hours : null;
@@ -14,7 +14,7 @@ export function RecipeCardDetail({ preparationTime, sideDish }) {
 
   if (preparationTime >= 0 || sideDish) {
     return (
-      <CardSubtitle style={{ fontSize: '14px' }}>
+      <CardSubtitle style={{ fontSize: fontSize }}>
         {preparationTime >= 0 && <BiTimeFive />}
         {hoursToPrepare(preparationTime) && (
           <span> {hoursToPrepare(preparationTime)} h</span>

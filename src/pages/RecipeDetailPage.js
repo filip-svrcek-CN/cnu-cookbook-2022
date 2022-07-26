@@ -5,6 +5,7 @@ import { Container, Spinner, Alert, Row, Col, List, Button } from 'reactstrap';
 import { api } from '../api';
 import { DeleteRecipeModal } from '../components/DeleteRecipeModal';
 import { DirectionsList } from '../components/DirectionsList';
+import { RecipeCardDetail } from "../components/RecipeCardDetail";
 
 export function RecipeDetailPage() {
   const { slug } = useParams();
@@ -42,7 +43,7 @@ export function RecipeDetailPage() {
     return null;
   }
 
-  const { title, preparationTime, ingredients, directions } = recipe;
+  const { title, preparationTime, ingredients, directions, sideDish } = recipe;
 
   return (
     <Container>
@@ -57,10 +58,14 @@ export function RecipeDetailPage() {
           Smazat
         </Button>
       </div>
+      <RecipeCardDetail
+        preparationTime={preparationTime}
+        sideDish={sideDish}
+        fontSize="17px"
+      />
       <Row>
         <Col lg={4}>
-          <h5>{preparationTime} min</h5>
-          <List type="unstyled">
+          <List type="unstyled" style={{ marginTop: "10px" }}>
             {ingredients.map(({ _id, name, amount, amountUnit }) => {
               return (
                 <li key={_id}>

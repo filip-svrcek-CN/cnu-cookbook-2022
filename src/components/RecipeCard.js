@@ -18,6 +18,7 @@ export function RecipeCard(props) {
           <RecipeCardDetail
             preparationTime={preparationTime}
             sideDish={sideDish}
+            fontSize='14px'
           />
         </CardBody>
       </Card>
