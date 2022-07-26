@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Col, Button, Row } from 'reactstrap';
+import { Form, Col, Row } from 'reactstrap';
 import { Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +10,7 @@ import { DirectionsForm } from './DirectionsForm';
 import { DirectionsList } from './DirectionsList';
 import { IngredientsFormParent } from './IngredientsFormParent';
 import { TitleForm } from './TitleForm';
+import { SaveButton } from './SaveButton';
 
 export function RecipeForm({ initialData }) {
   const [isSuccess, setIsSuccess] = useState(false);
@@ -50,26 +51,7 @@ export function RecipeForm({ initialData }) {
 
   return (
     <Form>
-      {!isLoading && (
-        <Button
-          block
-          color="primary"
-          style={{ margin: '12px 0px 12px 0px' }}
-          onClick={handleSubmit}
-        >
-          Uložit recept
-        </Button>
-      )}
-      {isLoading && (
-        <Button
-          disabled
-          block
-          color="primary"
-          style={{ margin: '12px 0px 12px 0px' }}
-        >
-          Ukládání receptu...
-        </Button>
-      )}
+      <SaveButton handleSubmit={handleSubmit} isLoading={isLoading} />
       <Row>
         <Col md={12}>
           <TitleForm
