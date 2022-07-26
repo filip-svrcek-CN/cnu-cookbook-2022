@@ -1,7 +1,7 @@
 import { Card, CardBody, CardTitle, CardImg } from 'reactstrap';
 
 import placeholder from '../images/food-placeholder.png';
-import { RecipeCardDetail } from './RecipeCardDetail';
+import { PreptimeSidedish } from './PreptimeSidedish';
 
 export function RecipeCard(props) {
   const { slug, title, preparationTime, sideDish } = props;
@@ -15,7 +15,7 @@ export function RecipeCard(props) {
         <CardImg src={placeholder} alt="Preview" />
         <CardBody>
           <CardTitle tag="h6">{title}</CardTitle>
-          <RecipeCardDetail
+          <PreptimeSidedish
             preparationTime={preparationTime}
             sideDish={sideDish}
             fontSize='14px'

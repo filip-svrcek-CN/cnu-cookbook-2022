@@ -5,7 +5,7 @@ import { Container, Spinner, Alert, Row, Col, List, Button } from 'reactstrap';
 import { api } from '../api';
 import { DeleteRecipeModal } from '../components/DeleteRecipeModal';
 import { DirectionsList } from '../components/DirectionsList';
-import { RecipeCardDetail } from "../components/RecipeCardDetail";
+import { PreptimeSidedish } from "../components/PreptimeSidedish";
 
 export function RecipeDetailPage() {
   const { slug } = useParams();
@@ -58,7 +58,7 @@ export function RecipeDetailPage() {
           Smazat
         </Button>
       </div>
-      <RecipeCardDetail
+      <PreptimeSidedish
         preparationTime={preparationTime}
         sideDish={sideDish}
         fontSize="17px"
