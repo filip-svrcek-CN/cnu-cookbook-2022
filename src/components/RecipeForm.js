@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { Form, Col, Button, Alert, Row } from 'reactstrap';
+import { Form, Col, Button, Row } from 'reactstrap';
+import { Navigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { api } from '../api';
 import { BasicInfo } from './BasicInfoForm';
@@ -11,7 +14,6 @@ import { TitleForm } from './TitleForm';
 export function RecipeForm({ initialData }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
   const [invalidForm, setInvalidForm] = useState(false);
   const [data, setData] = useState(initialData);
 
@@ -29,16 +31,22 @@ export function RecipeForm({ initialData }) {
     event.preventDefault();
     api
       .post(`/recipes/${initialData._id}`, data)
-      .then(() => {
+      .then((res) => {
+        setData(res.data);
         setIsSuccess(true);
+        toast.success('Recept úspěšně uložen!');
       })
       .catch(() => {
-        setHasError(true);
+        toast.error('Uložení nebylo úspěšné!');
       })
       .finally(() => {
         setIsLoading(false);
       });
   };
+
+  if (isSuccess) {
+    return <Navigate to={`/recipe/${data.slug}`} />;
+  }
 
   return (
     <Form>
@@ -61,10 +69,6 @@ export function RecipeForm({ initialData }) {
         >
           Ukládání receptu...
         </Button>
-      )}
-      {isSuccess && <Alert color="success">Recept úspěšně uložen!</Alert>}
-      {!isSuccess && hasError && (
-        <Alert color="danger">Uložení nebylo úspěšné!</Alert>
       )}
       <Row>
         <Col md={12}>
