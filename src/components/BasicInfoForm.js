@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import {
   Input,
   FormGroup,
@@ -7,14 +6,7 @@ import {
   InputGroup,
 } from 'reactstrap';
 
-export function BasicInfo({ updateData, initialData }) {
-  const [basicInfoFormData, setBasicInfoFormData] = useState({ initialData });
-
-  useEffect(() => {
-    updateData(basicInfoFormData);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [basicInfoFormData]);
-
+export function BasicInfo({ updateData, basicInfo }) {
   return (
     <div>
       <h3>Základní údaje</h3>
@@ -27,9 +19,9 @@ export function BasicInfo({ updateData, initialData }) {
             type="number"
             onChange={(event) => {
               const preparationTime = event.target.value;
-              setBasicInfoFormData({ ...basicInfoFormData, preparationTime });
+              updateData({ preparationTime });
             }}
-            value={basicInfoFormData.preparationTime || ''}
+            value={basicInfo.preparationTime || ''}
           />
           <InputGroupText>min.</InputGroupText>
         </InputGroup>
@@ -42,9 +34,9 @@ export function BasicInfo({ updateData, initialData }) {
           type="number"
           onChange={(event) => {
             const servingCount = event.target.value;
-            setBasicInfoFormData({ ...basicInfoFormData, servingCount });
+            updateData({ servingCount });
           }}
-          value={basicInfoFormData.servingCount || ''}
+          value={basicInfo.servingCount || ''}
         />
       </FormGroup>
       <FormGroup>
@@ -54,9 +46,9 @@ export function BasicInfo({ updateData, initialData }) {
           name="sideDishes"
           onChange={(event) => {
             const sideDish = event.target.value;
-            setBasicInfoFormData({ ...basicInfoFormData, sideDish });
+            updateData({ sideDish });
           }}
-          value={basicInfoFormData.sideDish || ''}
+          value={basicInfo.sideDish || ''}
         />
       </FormGroup>
     </div>

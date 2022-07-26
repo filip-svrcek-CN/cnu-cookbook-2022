@@ -66,7 +66,7 @@ export function RecipeForm({ initialData }) {
         <Col md={3} sm={6} xs={12}>
           <BasicInfo
             updateData={updateData}
-            initialData={{
+            basicInfo={{
               servingCount: data.servingCount,
               sideDish: data.sideDish,
               preparationTime: data.preparationTime,
@@ -76,14 +76,14 @@ export function RecipeForm({ initialData }) {
         <Col md={4} sm={6} xs={12}>
           <IngredientsFormParent
             updateData={updateData}
-            initialData={data.ingredients}
+            ingredients={data.ingredients}
           />
         </Col>
         <Col md={5} sm={6} xs={12}>
           <h3>Postup přípravy</h3>
           <DirectionsForm
             updateData={updateData}
-            initialData={data.directions}
+            directions={data.directions}
           />
         </Col>
       </Row>

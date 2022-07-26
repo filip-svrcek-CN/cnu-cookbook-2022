@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   Row,
   Col,
@@ -10,37 +10,35 @@ import {
 } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 
-export function IngredientsForm({ updateIngredients, initialData }) {
-  const [ingredients, setIngredients] = useState(initialData);
+export function IngredientsForm({ updateData, ingredients }) {
   const [ingredientFormData, setIngredientFormData] = useState({});
   const [groupFormData, setGroupFormData] = useState({});
 
-  useEffect(() => {
-    updateIngredients(ingredients);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ingredients]);
-
   const handleAddItem = () => {
-    setIngredients([
-      ...ingredients,
-      {
-        ...ingredientFormData,
-        customId: uuid(),
-        isGroup: false,
-      },
-    ]);
+    updateData({
+      ingredients: [
+        ...ingredients,
+        {
+          ...ingredientFormData,
+          customId: uuid(),
+          isGroup: false,
+        },
+      ],
+    });
     setIngredientFormData({});
   };
 
   const handleAddGroupItem = () => {
-    setIngredients([
-      ...ingredients,
-      {
-        ...groupFormData,
-        customId: uuid(),
-        isGroup: true,
-      },
-    ]);
+    updateData({
+      ingredients: [
+        ...ingredients,
+        {
+          ...groupFormData,
+          customId: uuid(),
+          isGroup: true,
+        },
+      ],
+    });
     setGroupFormData({});
   };
 

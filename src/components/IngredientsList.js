@@ -1,10 +1,11 @@
 import { Button, ListGroup, ListGroupItem } from 'reactstrap';
 
-export function IngredientsList({ updateIngredients, ingredients }) {
+export function IngredientsList({ updateData, ingredients }) {
   const handleDeleteItem = (key) => {
-    updateIngredients(
-      ingredients.filter(({ _id, customId }) => _id + customId !== key),
+    const ingredientsAfterDelete = ingredients.filter(
+      ({ _id, customId }) => _id + customId !== key,
     );
+    updateData({ ingredients: ingredientsAfterDelete });
   };
   return (
     <div style={{ marginBottom: '15px' }}>

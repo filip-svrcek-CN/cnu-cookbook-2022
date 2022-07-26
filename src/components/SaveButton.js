@@ -24,5 +24,5 @@ export function SaveButton({ handleSubmit, isLoading }) {
         </Button>
       )}
     </div>
-  )
+  );
 }
