@@ -5,20 +5,25 @@
   justify-content: flex-end;
   margin-bottom: 10px;
 }
-/* @media only screen and (max-width: 990px) {
-  .receptDetailButtons {
-    display: flex;
-    flex: 1 1 auto;
-    -webkit-box-pack: end;
-    justify-content: flex-end;
-  }
-} */
+
 .recipeCard:hover {
   cursor: pointer;
 }
 .recipeCard:hover > div {
   background-color: rgb(229, 229, 229);
 }
+
+.recipeCard {
+  max-height: 210px;
+}
+
+.card-title,
+.card-subtitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .sortRecipeList {
   display: flex;
   flex: 1 1 auto;
