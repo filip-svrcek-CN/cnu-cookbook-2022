@@ -18,7 +18,7 @@ export function RecipeCard(props) {
           <PreptimeSidedish
             preparationTime={preparationTime}
             sideDish={sideDish}
-            fontSize='14px'
+            fontSize="14px"
           />
         </CardBody>
       </Card>

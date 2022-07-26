@@ -13,10 +13,6 @@
   background-color: rgb(229, 229, 229);
 }
 
-.recipeCard {
-  max-height: 210px;
-}
-
 .card-title,
 .card-subtitle {
   white-space: nowrap;
@@ -53,4 +49,9 @@ div.directionsList ol li::before {
   top: 8px;
   text-align: center;
   line-height: 30px;
+}
+
+input[type='number'].ingredientsTable::-webkit-inner-spin-button,
+input[type='number'].ingredientsTable::-webkit-outer-spin-button {
+  opacity: 1;
 }

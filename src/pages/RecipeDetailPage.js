@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Container, Spinner, Alert, Row, Col, List, Button } from 'reactstrap';
+import { Container, Spinner, Alert, Row, Col, Button } from 'reactstrap';
 
 import { api } from '../api';
 import { DeleteRecipeModal } from '../components/DeleteRecipeModal';
 import { DirectionsList } from '../components/DirectionsList';
-import { PreptimeSidedish } from "../components/PreptimeSidedish";
+import { PreptimeSidedish } from '../components/PreptimeSidedish';
+import { IngredientsTable } from '../components/IngredientsTable';
 
 export function RecipeDetailPage() {
   const { slug } = useParams();
@@ -43,7 +44,14 @@ export function RecipeDetailPage() {
     return null;
   }
 
-  const { title, preparationTime, ingredients, directions, sideDish } = recipe;
+  const {
+    title,
+    preparationTime,
+    ingredients,
+    directions,
+    sideDish,
+    servingCount,
+  } = recipe;
 
   return (
     <Container>
@@ -65,15 +73,10 @@ export function RecipeDetailPage() {
       />
       <Row>
         <Col lg={4}>
-          <List type="unstyled" style={{ marginTop: "10px" }}>
-            {ingredients.map(({ _id, name, amount, amountUnit }) => {
-              return (
-                <li key={_id}>
-                  {amount} {amountUnit} {name}
-                </li>
-              );
-            })}
-          </List>
+          <IngredientsTable
+            ingredients={ingredients}
+            servingCount={servingCount}
+          />
         </Col>
         <Col lg={8}>
           <DirectionsList directions={directions} />

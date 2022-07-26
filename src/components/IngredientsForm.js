@@ -57,6 +57,7 @@ export function IngredientsForm({ updateData, ingredients }) {
               <Label>Název ingredience</Label>
               <InputGroup>
                 <Input
+                  style={{ marginRight: '6px' }}
                   value={ingredientFormData.name || ''}
                   onChange={(event) => {
                     const name = event.target.value;
@@ -69,10 +70,11 @@ export function IngredientsForm({ updateData, ingredients }) {
           </Col>
         </Row>
         <Row>
-          <Col md={6}>
+          <Col md={4} style={{ paddingRight: '3px' }}>
             <FormGroup>
               <Label>Množství</Label>
               <Input
+                style={{ borderRadius: ' 0.25rem 0 0 0.25rem' }}
                 value={ingredientFormData.amount || ''}
                 type="number"
                 onChange={(event) => {
@@ -82,10 +84,11 @@ export function IngredientsForm({ updateData, ingredients }) {
               />
             </FormGroup>
           </Col>
-          <Col md={6}>
+          <Col md={8} style={{ paddingLeft: '3px' }}>
             <FormGroup>
               <Label>Jednotka</Label>
               <Input
+                style={{ borderRadius: '0 0.25rem 0.25rem 0' }}
                 value={ingredientFormData.amountUnit || ''}
                 onChange={(event) => {
                   const amountUnit = event.target.value;
@@ -109,6 +112,7 @@ export function IngredientsForm({ updateData, ingredients }) {
             <Label>Název skupiny</Label>
             <InputGroup>
               <Input
+                style={{ marginRight: '5px' }}
                 value={groupFormData.name || ''}
                 onChange={(event) => {
                   const name = event.target.value;

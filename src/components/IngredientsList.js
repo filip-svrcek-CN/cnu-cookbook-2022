@@ -18,7 +18,7 @@ export function IngredientsList({ updateData, ingredients }) {
                 key={key}
                 style={
                   isGroup
-                    ? { backgroundColor: 'lightgray', fontWeight: 'bold' }
+                    ? { backgroundColor: '#e9ecef', fontWeight: 'bold' }
                     : null
                 }
               >
