@@ -14,7 +14,9 @@ export function RecipeCard(props) {
       <Card className="h-100 recipeCard">
         <CardImg src={placeholder} alt="Preview" />
         <CardBody>
-          <CardTitle tag="h6">{title}</CardTitle>
+          <CardTitle className="cardTitle" tag="h6">
+            {title}
+          </CardTitle>
           <PreptimeSidedish
             preparationTime={preparationTime}
             sideDish={sideDish}

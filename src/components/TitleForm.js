@@ -15,7 +15,9 @@ export function TitleForm({ updateData, title, invalidForm, setValid }) {
         invalid={invalidForm}
         onFocus={setValid}
       />
-      <FormFeedback tooltip>Pole je povinné</FormFeedback>
+      <FormFeedback tooltip className="invalidTooltip">
+        Pole je povinné
+      </FormFeedback>
     </FormGroup>
   );
 }

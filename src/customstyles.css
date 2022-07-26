@@ -13,13 +13,12 @@
   background-color: rgb(229, 229, 229);
 }
 
-.card-title,
-.card-subtitle {
+.cardTitle,
+.cardSubtitle {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .sortRecipeList {
   display: flex;
   flex: 1 1 auto;
@@ -54,4 +53,8 @@ div.directionsList ol li::before {
 input[type='number'].ingredientsTable::-webkit-inner-spin-button,
 input[type='number'].ingredientsTable::-webkit-outer-spin-button {
   opacity: 1;
+}
+
+div.invalidTooltip {
+  font-size: 12px;
 }

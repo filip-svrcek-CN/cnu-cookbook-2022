@@ -1,14 +1,7 @@
 import { useState } from 'react';
-import {
-  Row,
-  Col,
-  FormGroup,
-  Label,
-  InputGroup,
-  Input,
-  Button,
-} from 'reactstrap';
+import { Row, Col, FormGroup, Label, Input } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
+import { IngredientSubmitName } from './IngredientSubmitName';
 
 export function IngredientsForm({ updateData, ingredients }) {
   const [ingredientFormData, setIngredientFormData] = useState({});
@@ -53,20 +46,12 @@ export function IngredientsForm({ updateData, ingredients }) {
       >
         <Row>
           <Col md={12}>
-            <FormGroup>
-              <Label>Název ingredience</Label>
-              <InputGroup>
-                <Input
-                  style={{ marginRight: '6px' }}
-                  value={ingredientFormData.name || ''}
-                  onChange={(event) => {
-                    const name = event.target.value;
-                    setIngredientFormData({ ...ingredientFormData, name });
-                  }}
-                />
-                <Button onClick={handleAddItem}>Přidat ingredienci</Button>
-              </InputGroup>
-            </FormGroup>
+            <IngredientSubmitName
+              label={'Název ingredience'}
+              formData={ingredientFormData}
+              setFormData={setIngredientFormData}
+              handleAddItem={handleAddItem}
+            />
           </Col>
         </Row>
         <Row>
@@ -108,20 +93,12 @@ export function IngredientsForm({ updateData, ingredients }) {
         }}
       >
         <Col md={12}>
-          <FormGroup>
-            <Label>Název skupiny</Label>
-            <InputGroup>
-              <Input
-                style={{ marginRight: '5px' }}
-                value={groupFormData.name || ''}
-                onChange={(event) => {
-                  const name = event.target.value;
-                  setGroupFormData({ ...groupFormData, name });
-                }}
-              />
-              <Button onClick={handleAddGroupItem}>Přidat skupinu</Button>
-            </InputGroup>
-          </FormGroup>
+          <IngredientSubmitName
+            label={'Název skupiny'}
+            formData={groupFormData}
+            setFormData={setGroupFormData}
+            handleAddItem={handleAddGroupItem}
+          />
         </Col>
       </div>
     </div>

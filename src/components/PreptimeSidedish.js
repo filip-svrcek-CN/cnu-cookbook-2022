@@ -14,7 +14,7 @@ export function PreptimeSidedish({ preparationTime, sideDish, fontSize }) {
 
   if (preparationTime >= 0 || sideDish) {
     return (
-      <CardSubtitle style={{ fontSize: fontSize }}>
+      <CardSubtitle className="cardSubtitle" style={{ fontSize: fontSize }}>
         {preparationTime >= 0 && <BiTimeFive />}
         {hoursToPrepare(preparationTime) && (
           <span> {hoursToPrepare(preparationTime)} h</span>
@@ -33,7 +33,10 @@ export function PreptimeSidedish({ preparationTime, sideDish, fontSize }) {
   }
 
   return (
-    <CardSubtitle style={{ fontSize: '14px', fontStyle: 'italic' }}>
+    <CardSubtitle
+      className="cardSubtitle"
+      style={{ fontSize: '14px', fontStyle: 'italic' }}
+    >
       žádné údaje
     </CardSubtitle>
   );
