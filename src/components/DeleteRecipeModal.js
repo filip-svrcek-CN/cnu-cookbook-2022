@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import {
   Spinner,
@@ -14,16 +14,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { api } from '../api';
 
-export function DeleteRecipeModal({ getModalState, recipeId }) {
+export function DeleteRecipeModal({ openModal, setOpenModal, recipeId }) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [modalState, setModalState] = useState(true);
+  // const [modalState, setModalState] = useState(true);
 
-  useEffect(() => {
-    getModalState(modalState);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [modalState]);
+  // useEffect(() => {
+  //   updateModalState(modalState);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [modalState]);
 
   const handleDeleteRecipe = () => {
     setHasError(false);
@@ -45,7 +45,7 @@ export function DeleteRecipeModal({ getModalState, recipeId }) {
   const notify = () => toast.success('Recept úspěšně smazán!');
 
   return (
-    <Modal isOpen={modalState}>
+    <Modal isOpen={openModal}>
       <ModalHeader>Smazání receptu</ModalHeader>
       <ModalBody>
         <div>Opravdu chcete smazat recept?</div>
@@ -67,7 +67,7 @@ export function DeleteRecipeModal({ getModalState, recipeId }) {
           </Button>
         )}
         {!isSuccess && (
-          <Button color="secondary" onClick={() => setModalState(!modalState)}>
+          <Button color="secondary" onClick={() => setOpenModal(!openModal)}>
             Zrušit
           </Button>
         )}

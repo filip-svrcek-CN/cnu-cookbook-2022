@@ -30,10 +30,6 @@ export function RecipeDetailPage() {
       });
   }, [slug]);
 
-  const getModalState = (res) => {
-    setOpenModal(res);
-  };
-
   if (isLoading) {
     return <Spinner />;
   }
@@ -84,7 +80,8 @@ export function RecipeDetailPage() {
       </Row>
       {openModal && (
         <DeleteRecipeModal
-          getModalState={getModalState}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
           recipeId={recipe._id}
         />
       )}
