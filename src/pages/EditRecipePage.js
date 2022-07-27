@@ -26,11 +26,27 @@ export function EditRecipePage() {
       });
   }, [slug]);
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+  if (hasError) {
+    return <Alert color="danger">Vyskytla se chyba</Alert>;
+  }
+
   return (
     <Container>
-      <h1>Upravit recept</h1>
-      {isLoading && <Spinner />}
-      {hasError && <Alert color="danger">Vyskytla se chyba</Alert>}
+      {recipe ? (
+        <h1>
+          <a
+            href={`/recipe/${slug}`}
+            style={{ color: 'black', textDecoration: 'none' }}
+          >
+            {recipe.title}
+          </a>
+        </h1>
+      ) : (
+        <h1>Upravit recept</h1>
+      )}
       {recipe && <RecipeForm initialData={recipe} />}
     </Container>
   );

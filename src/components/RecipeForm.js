@@ -18,6 +18,8 @@ export function RecipeForm({ initialData }) {
   const [invalidForm, setInvalidForm] = useState(false);
   const [data, setData] = useState(initialData);
 
+  const id = () => (initialData._id ? initialData._id : '');
+
   const updateData = (newData) => {
     setData({ ...data, ...newData });
   };
@@ -28,9 +30,8 @@ export function RecipeForm({ initialData }) {
     }
     setInvalidForm(false);
     setIsLoading(true);
-    Object.keys(data).forEach((key) => data[key] === '' && delete data[key]);
     api
-      .post(`/recipes/${initialData._id}`, data)
+      .post(`/recipes/${id()}`, data)
       .then((res) => {
         setData(res.data);
         setIsSuccess(true);
