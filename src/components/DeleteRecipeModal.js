@@ -18,12 +18,6 @@ export function DeleteRecipeModal({ openModal, setOpenModal, recipeId }) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  // const [modalState, setModalState] = useState(true);
-
-  // useEffect(() => {
-  //   updateModalState(modalState);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [modalState]);
 
   const handleDeleteRecipe = () => {
     setHasError(false);
