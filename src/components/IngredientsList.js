@@ -12,7 +12,7 @@ export function IngredientsList({ updateData, ingredients }) {
   };
   return (
     <div style={{ marginBottom: '15px' }}>
-      <Table borderless>
+      <Table>
         <tbody>
           {ingredients.map(
             ({ name, amount, amountUnit, _id, customId, isGroup }) => {
@@ -27,7 +27,7 @@ export function IngredientsList({ updateData, ingredients }) {
                       : null
                   }
                 >
-                  <td>
+                  <td style={{ padding: '8px 0px 8px 0px' }}>
                     <button
                       className="remove"
                       type="button"
