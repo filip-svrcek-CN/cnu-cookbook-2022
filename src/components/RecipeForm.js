@@ -16,9 +16,11 @@ export function RecipeForm({ initialData }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [invalidForm, setInvalidForm] = useState(false);
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState(
+    initialData ? initialData : { ingredients: [] },
+  );
 
-  const id = () => (initialData._id ? initialData._id : '');
+  const id = () => (initialData && initialData._id ? initialData._id : '');
 
   const updateData = (newData) => {
     setData({ ...data, ...newData });
