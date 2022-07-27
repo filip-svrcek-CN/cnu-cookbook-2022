@@ -55,7 +55,7 @@ export function IngredientsForm({ updateData, ingredients }) {
           </Col>
         </Row>
         <Row>
-          <Col md={4} style={{ paddingRight: '3px' }}>
+          <Col md={4} sm={4} xs={4} style={{ paddingRight: '3px' }}>
             <FormGroup>
               <Label>Množství</Label>
               <Input
@@ -69,7 +69,7 @@ export function IngredientsForm({ updateData, ingredients }) {
               />
             </FormGroup>
           </Col>
-          <Col md={8} style={{ paddingLeft: '3px' }}>
+          <Col md={8} sm={8} xs={8} style={{ paddingLeft: '3px' }}>
             <FormGroup>
               <Label>Jednotka</Label>
               <Input
@@ -89,7 +89,7 @@ export function IngredientsForm({ updateData, ingredients }) {
           border: '1px solid #0d6efd',
           borderRadius: '0.25rem',
           padding: '10px',
-          marginTop: '15px',
+          margin: '15px 0px 10px 0px',
         }}
       >
         <Col md={12}>
