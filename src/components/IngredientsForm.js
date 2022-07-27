@@ -62,6 +62,7 @@ export function IngredientsForm({ updateData, ingredients }) {
                 style={{ borderRadius: ' 0.25rem 0 0 0.25rem' }}
                 value={ingredientFormData.amount || ''}
                 type="number"
+                min={1}
                 onChange={(event) => {
                   const amount = event.target.value;
                   setIngredientFormData({ ...ingredientFormData, amount });
