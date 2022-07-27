@@ -34,7 +34,7 @@ export function IngredientsTable({ ingredients, servingCount }) {
                 style={isGroup ? { backgroundColor: '#e9ecef' } : null}
               >
                 {servingCountInputValue > 0 ? (
-                  <td>{amount && Math.round(amount * servingCountInputValue / (servingCount || 1) * 100) / 100}</td>
+                  <td>{amount && (Math.round(amount * servingCountInputValue / (servingCount || 1) * 100) / 100).toString().replace('.', ',')}</td>
                 ) : (
                   <td>{amount && amount}</td>
                 )}
