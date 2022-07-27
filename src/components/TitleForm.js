@@ -11,7 +11,7 @@ export function TitleForm({ updateData, title, invalidForm, setValid }) {
           const title = event.target.value;
           updateData({ title });
         }}
-        value={title}
+        value={title || ''}
         invalid={invalidForm}
         onFocus={setValid}
       />

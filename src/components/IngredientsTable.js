@@ -17,8 +17,8 @@ export function IngredientsTable({ ingredients, servingCount }) {
           bsSize="sm"
           className={'ingredientsTable'}
           type="number"
-          min={0}
-          value={servingCountInputValue}
+          min={1}
+          value={servingCountInputValue || ''}
           onChange={(event) => {
             setServingCountInputValue(event.target.value);
           }}
@@ -33,7 +33,11 @@ export function IngredientsTable({ ingredients, servingCount }) {
                 key={_id}
                 style={isGroup ? { backgroundColor: '#e9ecef' } : null}
               >
-                <td>{amount && amount * servingCountInputValue}</td>
+                {servingCountInputValue > 0 ? (
+                  <td>{amount && amount * servingCountInputValue}</td>
+                ) : (
+                  <td>{amount && amount}</td>
+                )}
                 <td>{amountUnit}</td>
                 <td>{name}</td>
               </tr>

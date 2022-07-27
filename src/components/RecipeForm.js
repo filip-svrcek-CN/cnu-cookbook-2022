@@ -22,8 +22,8 @@ export function RecipeForm({ initialData }) {
     setData({ ...data, ...newData });
   };
 
-  const handleSubmit = (event) => {
-    if (data.title === '') {
+  const handleSubmit = () => {
+    if (!data.title) {
       return setInvalidForm(true);
     }
     setInvalidForm(false);

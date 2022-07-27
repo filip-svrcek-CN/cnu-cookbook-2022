@@ -4,11 +4,6 @@ import { RecipeForm } from '../components/RecipeForm';
 
 export function NewRecipePage() {
   const recipe = {
-    title: '',
-    preparationTime: '',
-    servingCount: '',
-    sideDish: '',
-    directions: '',
     ingredients: [],
     _id: '',
   };
