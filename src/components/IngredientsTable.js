@@ -34,7 +34,7 @@ export function IngredientsTable({ ingredients, servingCount }) {
                 style={isGroup ? { backgroundColor: '#e9ecef' } : null}
               >
                 {servingCountInputValue > 0 ? (
-                  <td>{amount && amount * servingCountInputValue}</td>
+                  <td>{amount && amount * servingCountInputValue / (servingCount || 1)}</td>
                 ) : (
                   <td>{amount && amount}</td>
                 )}

@@ -17,6 +17,7 @@ export function BasicInfo({ updateData, basicInfo }) {
             id="preparationTime"
             name="preparationTime"
             type="number"
+            min={1}
             onChange={(event) => {
               const preparationTime = event.target.value;
               updateData({ preparationTime });
@@ -32,6 +33,7 @@ export function BasicInfo({ updateData, basicInfo }) {
           id="servingCount"
           name="servingCount"
           type="number"
+          min={1}
           onChange={(event) => {
             const servingCount = event.target.value;
             updateData({ servingCount });
