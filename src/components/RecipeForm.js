@@ -29,7 +29,6 @@ export function RecipeForm({ initialData }) {
     setInvalidForm(false);
     setIsLoading(true);
     Object.keys(data).forEach((key) => data[key] === '' && delete data[key]);
-    event.preventDefault();
     api
       .post(`/recipes/${initialData._id}`, data)
       .then((res) => {

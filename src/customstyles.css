@@ -6,9 +6,6 @@
   margin-bottom: 10px;
 }
 
-.recipeCard:hover {
-  cursor: pointer;
-}
 .recipeCard:hover > div {
   background-color: rgb(229, 229, 229);
 }
@@ -19,6 +16,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .sortRecipeList {
   display: flex;
   flex: 1 1 auto;
@@ -26,16 +24,19 @@
   justify-content: flex-end;
   margin-bottom: 12px;
 }
+
 div.directionsList ol {
   list-style: none;
   counter-reset: my-counter;
   padding-left: 40px;
 }
+
 div.directionsList ol li {
   counter-increment: my-counter;
   padding: 10px 0px 10px 0px;
   position: relative;
 }
+
 div.directionsList ol li::before {
   content: counter(my-counter);
   color: white;

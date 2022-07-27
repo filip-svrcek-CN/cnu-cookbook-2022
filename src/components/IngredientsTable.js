@@ -11,8 +11,9 @@ export function IngredientsTable({ ingredients, servingCount }) {
 
   return (
     <div>
-      <InputGroup style={{ marginTop: '10px' }}>
+      <InputGroup style={{ marginTop: '10px', borderRadius: '0.25rem' }}>
         <Input
+          style={{ border: '1px solid #0d6efd' }}
           bsSize="sm"
           className={'ingredientsTable'}
           type="number"
