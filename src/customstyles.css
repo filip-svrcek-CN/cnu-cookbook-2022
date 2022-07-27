@@ -59,3 +59,39 @@ input[type='number'].ingredientsTable::-webkit-outer-spin-button {
 div.invalidTooltip {
   font-size: 12px;
 }
+
+.ingredientsListItem > td:first-child {
+  border-radius: 0.25rem 0px 0px 0.25rem;
+}
+
+.ingredientsListItem > td:last-child {
+  border-radius: 0px 0.25rem 0.25rem 0px;
+}
+
+.ingredientsListItem button {
+  border: none;
+  background-color: transparent;
+  color: none;
+}
+
+.ingredientsListItem button.remove > svg {
+  font-size: 24px;
+  color: red;
+}
+
+.ingredientsListItem button.remove:hover > svg {
+  color: darkred;
+}
+
+.ingredientsListItem .orderControl svg {
+  font-size: 20px;
+  color: gray;
+}
+
+.ingredientsListItem .orderControl button:hover svg {
+  color: rgb(80, 80, 80);
+}
+
+.ingredientsListItem .orderControl button {
+  padding: 0px;
+}
