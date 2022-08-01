@@ -88,10 +88,10 @@ export function RecipeListPage() {
       </div>
       {isLoading && <Spinner style={{ marginBottom: '30px' }} />}
       {hasError && <Alert color="danger">Vyskytla se chyba</Alert>}
-      {filteredRecipes.length > 0 ? (
-        <RecipesList recipes={filteredRecipes} />
-      ) : (
+      {recipes.length > 0 && filteredRecipes.length === 0 ? (
         <p>zadanému vyhledávání neodpovídají žádné recepty</p>
+      ) : (
+        <RecipesList recipes={filteredRecipes} />
       )}
     </Container>
   );
