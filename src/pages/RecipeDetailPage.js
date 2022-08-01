@@ -53,6 +53,11 @@ export function RecipeDetailPage() {
     <Container>
       <h1>{title}</h1>
       <div className="receptDetailButtons">
+        <Link to={`/novy-recept`} state={{ recipe }}>
+          <Button color="primary" outline style={{ marginRight: '5px' }}>
+            Kopírovat
+          </Button>
+        </Link>
         <Link to={`/upravit-recept/${slug}`}>
           <Button color="primary" style={{ marginRight: '5px' }}>
             Upravit
