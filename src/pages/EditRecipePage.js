@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Container, Spinner, Alert } from 'reactstrap';
 
 import { RecipeForm } from '../components/RecipeForm';
@@ -37,12 +37,12 @@ export function EditRecipePage() {
     <Container>
       {recipe ? (
         <h1>
-          <a
-            href={`/recipe/${slug}`}
+          <Link
+            to={`/recipe/${slug}`}
             style={{ color: 'black', textDecoration: 'none' }}
           >
             {recipe.title}
-          </a>
+          </Link>
         </h1>
       ) : (
         <h1>Upravit recept</h1>

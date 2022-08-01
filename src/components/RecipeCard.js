@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Card, CardBody, CardTitle, CardImg } from 'reactstrap';
 
 import placeholder from '../images/food-placeholder.png';
@@ -7,8 +8,8 @@ export function RecipeCard(props) {
   const { slug, title, preparationTime, sideDish } = props;
 
   return (
-    <a
-      href={`/recipe/${slug}`}
+    <Link
+      to={`/recipe/${slug}`}
       style={{ textDecoration: 'none', color: '#212529' }}
     >
       <Card className="h-100 recipeCard">
@@ -24,6 +25,6 @@ export function RecipeCard(props) {
           />
         </CardBody>
       </Card>
-    </a>
+    </Link>
   );
 }

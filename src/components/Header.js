@@ -1,12 +1,5 @@
-import { useLocation } from 'react-router-dom';
-import {
-  Navbar,
-  Container,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from 'reactstrap';
+import { Link, useLocation } from 'react-router-dom';
+import { Navbar, Container, NavbarBrand, Nav, NavItem } from 'reactstrap';
 
 export function Header() {
   const path = useLocation().pathname;
@@ -15,19 +8,30 @@ export function Header() {
     <Navbar color="dark" dark>
       <Container>
         <NavbarBrand href="/">Cookbook</NavbarBrand>
-        <Nav pills>
+        <Nav>
           <NavItem>
-            <NavLink className={path === '/' ? 'active' : null} href="/">
-              Recepty
-            </NavLink>
+            <Link to={'/'}>
+              <div
+                className={
+                  path === '/' ? 'btn btn-primary' : 'btn btn-outline-primary'
+                }
+              >
+                Recepty
+              </div>
+            </Link>
           </NavItem>
           <NavItem>
-            <NavLink
-              className={path === '/prilohy' ? 'active' : null}
-              href="/prilohy"
-            >
-              Přílohy
-            </NavLink>
+            <Link to={'/prilohy'}>
+              <div
+                className={
+                  path === '/prilohy'
+                    ? 'btn btn-primary'
+                    : 'btn btn-outline-primary'
+                }
+              >
+                Přílohy
+              </div>
+            </Link>
           </NavItem>
         </Nav>
       </Container>
