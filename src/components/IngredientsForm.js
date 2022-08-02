@@ -35,6 +35,12 @@ export function IngredientsForm({ updateData, ingredients }) {
     setGroupFormData({});
   };
 
+  const clickSubmitButton = (event, id) => {
+    if (event.key === 'Enter') {
+      document.getElementById(id).click();
+    }
+  };
+
   return (
     <div>
       <div
@@ -51,6 +57,9 @@ export function IngredientsForm({ updateData, ingredients }) {
               formData={ingredientFormData}
               setFormData={setIngredientFormData}
               handleAddItem={handleAddItem}
+              onKeyDown={(event) =>
+                clickSubmitButton(event, 'Název ingredience')
+              }
             />
           </Col>
         </Row>
@@ -67,6 +76,9 @@ export function IngredientsForm({ updateData, ingredients }) {
                   const amount = event.target.value;
                   setIngredientFormData({ ...ingredientFormData, amount });
                 }}
+                onKeyDown={(event) =>
+                  clickSubmitButton(event, 'Název ingredience')
+                }
               />
             </FormGroup>
           </Col>
@@ -80,6 +92,9 @@ export function IngredientsForm({ updateData, ingredients }) {
                   const amountUnit = event.target.value;
                   setIngredientFormData({ ...ingredientFormData, amountUnit });
                 }}
+                onKeyDown={(event) =>
+                  clickSubmitButton(event, 'Název ingredience')
+                }
               />
             </FormGroup>
           </Col>
@@ -99,6 +114,7 @@ export function IngredientsForm({ updateData, ingredients }) {
             formData={groupFormData}
             setFormData={setGroupFormData}
             handleAddItem={handleAddGroupItem}
+            onKeyDown={(event) => clickSubmitButton(event, 'Název skupiny')}
           />
         </Col>
       </div>

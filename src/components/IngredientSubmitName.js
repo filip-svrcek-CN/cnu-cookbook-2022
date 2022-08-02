@@ -13,6 +13,7 @@ export function IngredientSubmitName({
   formData,
   setFormData,
   handleAddItem,
+  onKeyDown,
 }) {
   const [isInvalid, setIsInvalid] = useState(false);
 
@@ -34,11 +35,15 @@ export function IngredientSubmitName({
           onChange={(event) => {
             const name = event.target.value;
             setFormData({ ...formData, name });
+            setIsInvalid(false);
           }}
           invalid={isInvalid}
           onFocus={() => setIsInvalid(false)}
+          onKeyDown={onKeyDown}
         />
-        <Button onClick={handleValidationAndSubmit}>Přidat</Button>
+        <Button id={label} onClick={handleValidationAndSubmit}>
+          Přidat
+        </Button>
         <FormFeedback tooltip className="invalidTooltip">
           Pole je povinné
         </FormFeedback>
