@@ -38,7 +38,7 @@ export function IngredientSubmitName({
           invalid={isInvalid}
           onFocus={() => setIsInvalid(false)}
         />
-        <Button onClick={handleValidationAndSubmit}>Přidat ingredienci</Button>
+        <Button onClick={handleValidationAndSubmit}>Přidat</Button>
         <FormFeedback tooltip className="invalidTooltip">
           Pole je povinné
         </FormFeedback>

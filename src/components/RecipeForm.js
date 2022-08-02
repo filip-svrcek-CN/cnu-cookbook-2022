@@ -11,11 +11,13 @@ import { DirectionsList } from './DirectionsList';
 import { IngredientsFormParent } from './IngredientsFormParent';
 import { TitleForm } from './TitleForm';
 import { SaveButton } from './SaveButton';
+import { usePrompt } from './usePrompt';
 
 export function RecipeForm({ initialData }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [invalidForm, setInvalidForm] = useState(false);
+  const [isFormDirty, setIsFormDirty] = useState(false);
   const [data, setData] = useState(
     initialData ? initialData : { ingredients: [] },
   );
@@ -24,12 +26,19 @@ export function RecipeForm({ initialData }) {
 
   const updateData = (newData) => {
     setData({ ...data, ...newData });
+    setIsFormDirty(true);
   };
+
+  usePrompt(
+    'Opravdu si přejete opustit stránku? Změny nebudou uloženy.',
+    isFormDirty,
+  );
 
   const handleSubmit = () => {
     if (!data.title) {
       return setInvalidForm(true);
     }
+    setIsFormDirty(false);
     setInvalidForm(false);
     setIsLoading(true);
     api
