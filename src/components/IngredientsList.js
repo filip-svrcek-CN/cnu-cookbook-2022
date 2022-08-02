@@ -1,9 +1,13 @@
+import { useState } from 'react';
 import { Table } from 'reactstrap';
 import { BiTrash } from 'react-icons/bi';
 
 import { IngredientsOrderControl } from './IngredientsOrderControl';
+import { IngredientsListInput } from './IngredientsListInput';
 
 export function IngredientsList({ updateData, ingredients }) {
+  const [isEditing, setIsEditing] = useState('');
+
   const handleDeleteItem = (key) => {
     const ingredientsAfterDelete = ingredients.filter(
       ({ _id, customId }) => _id + customId !== key,
@@ -37,8 +41,19 @@ export function IngredientsList({ updateData, ingredients }) {
                         <BiTrash />
                       </button>
                     </td>
-                    <td>
-                      {name} {amount} {amountUnit}
+                    <td style={{ textAlign: 'right' }}>{amount}</td>
+                    <td style={{ textAlign: 'center' }}>{amountUnit}</td>
+                    <td onDoubleClick={() => setIsEditing(key)}>
+                      {key === isEditing ? (
+                        <IngredientsListInput
+                          name={name}
+                          setIsEditing={setIsEditing}
+                          id={key}
+                          ingredients={ingredients}
+                        />
+                      ) : (
+                        name
+                      )}
                     </td>
                     <IngredientsOrderControl
                       updateData={updateData}
@@ -51,6 +66,7 @@ export function IngredientsList({ updateData, ingredients }) {
             )}
         </tbody>
       </Table>
+      <div>*dvojklikem uprav název </div>
     </div>
   );
 }
