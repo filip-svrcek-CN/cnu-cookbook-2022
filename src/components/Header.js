@@ -15,6 +15,7 @@ export function Header() {
                 className={
                   path === '/' ? 'btn btn-primary' : 'btn btn-outline-primary'
                 }
+                style={{ border: 'none' }}
               >
                 Recepty
               </div>
@@ -28,6 +29,7 @@ export function Header() {
                     ? 'btn btn-primary'
                     : 'btn btn-outline-primary'
                 }
+                style={{ border: 'none' }}
               >
                 Přílohy
               </div>
