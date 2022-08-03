@@ -6,6 +6,8 @@ import {
   InputGroup,
 } from 'reactstrap';
 
+import { SideDishInput } from './SideDishInput';
+
 export function BasicInfo({ updateData, basicInfo }) {
   return (
     <div>
@@ -41,18 +43,7 @@ export function BasicInfo({ updateData, basicInfo }) {
           value={basicInfo.servingCount || ''}
         />
       </FormGroup>
-      <FormGroup>
-        <Label>Příloha</Label>
-        <Input
-          id="sideDishes"
-          name="sideDishes"
-          onChange={(event) => {
-            const sideDish = event.target.value;
-            updateData({ sideDish });
-          }}
-          value={basicInfo.sideDish || ''}
-        />
-      </FormGroup>
+      <SideDishInput updateData={updateData} sideDish={basicInfo.sideDish} />
     </div>
   );
 }
