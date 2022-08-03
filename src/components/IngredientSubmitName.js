@@ -8,6 +8,8 @@ import {
   FormFeedback,
 } from 'reactstrap';
 
+import { IngredientsDatalist } from './IngredientsDatalist';
+
 export function IngredientSubmitName({
   label,
   formData,
@@ -30,6 +32,7 @@ export function IngredientSubmitName({
       <Label>{label}</Label>
       <InputGroup>
         <Input
+          list={label}
           style={{ marginRight: '6px' }}
           value={formData.name || ''}
           onChange={(event) => {
@@ -41,6 +44,7 @@ export function IngredientSubmitName({
           onFocus={() => setIsInvalid(false)}
           onKeyDown={onKeyDown}
         />
+        {label === 'Název ingredience' && <IngredientsDatalist />}
         <Button id={label} onClick={handleValidationAndSubmit}>
           Přidat
         </Button>
