@@ -15,8 +15,8 @@ export function IngredientsList({ updateData, ingredients }) {
     updateData({ ingredients: ingredientsAfterDelete });
   };
   return (
-    <div style={{ marginBottom: '15px' }}>
-      <Table>
+    <div style={{ marginBottom: '20px' }}>
+      <Table style={{ marginBottom: '0px' }}>
         <tbody>
           {ingredients &&
             ingredients.map(
@@ -66,7 +66,13 @@ export function IngredientsList({ updateData, ingredients }) {
             )}
         </tbody>
       </Table>
-      <div>*dvojklikem uprav název </div>
+      {ingredients.length > 0 && (
+        <div
+          style={{ fontStyle: 'italic', fontSize: '12px', textAlign: 'right' }}
+        >
+          *dvojklikem lze upravit název
+        </div>
+      )}
     </div>
   );
 }
