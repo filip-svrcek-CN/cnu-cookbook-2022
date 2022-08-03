@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   FormGroup,
   Label,
@@ -14,19 +13,11 @@ export function IngredientSubmitName({
   label,
   formData,
   setFormData,
-  handleAddItem,
   onKeyDown,
+  handleValidationAndSubmit,
+  isInvalid,
+  setIsInvalid,
 }) {
-  const [isInvalid, setIsInvalid] = useState(false);
-
-  const handleValidationAndSubmit = () => {
-    if (!formData.name) {
-      setIsInvalid(true);
-    } else {
-      handleAddItem();
-    }
-  };
-
   return (
     <FormGroup>
       <Label>{label}</Label>
