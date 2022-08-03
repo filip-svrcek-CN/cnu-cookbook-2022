@@ -3,7 +3,7 @@ import { Row, Col, FormGroup, Label, Input } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 import { IngredientSubmitName } from './IngredientSubmitName';
 
-export function IngredientsForm({ updateData, ingredients }) {
+export function IngredientsForms({ updateData, ingredients }) {
   const [ingredientFormData, setIngredientFormData] = useState({});
   const [groupFormData, setGroupFormData] = useState({});
 
