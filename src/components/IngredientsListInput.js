@@ -13,6 +13,8 @@ export function IngredientsListInput({ name, setIsEditing, id, ingredients }) {
 
   return (
     <Input
+      autoFocus
+      onBlur={() => setIsEditing('')}
       style={{ padding: '0px 6px' }}
       value={itemName}
       onChange={(event) => {
