@@ -41,6 +41,7 @@ export function IngredientsFormAddGroup({ updateData, ingredients }) {
         border: '1px solid #0d6efd',
         borderRadius: '0.25rem',
         padding: '10px',
+        marginTop: '15px',
       }}
     >
       <Row>

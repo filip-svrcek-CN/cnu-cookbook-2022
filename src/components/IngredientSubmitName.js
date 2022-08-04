@@ -17,6 +17,7 @@ export function IngredientSubmitName({
   handleValidationAndSubmit,
   isInvalid,
   setIsInvalid,
+  inputRef,
 }) {
   return (
     <FormGroup>
@@ -34,6 +35,7 @@ export function IngredientSubmitName({
           invalid={isInvalid}
           onFocus={() => setIsInvalid(false)}
           onKeyDown={onKeyDown}
+          innerRef={inputRef && inputRef}
         />
         {label === 'Název ingredience' && <IngredientsDatalist />}
         <Button id={label} onClick={handleValidationAndSubmit}>

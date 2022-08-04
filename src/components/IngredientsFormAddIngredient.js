@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { Row, Col, FormGroup, Label, Input } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
+
 import { IngredientSubmitName } from './IngredientSubmitName';
+import { useFocus } from './useFocus';
 
 export function IngredientsFormAddIngredient({ updateData, ingredients }) {
   const [formData, setFormData] = useState({});
   const [isInvalid, setIsInvalid] = useState(false);
+  const [inputRef, setInputFocus] = useFocus();
 
   const handleAddItem = () => {
     updateData({
@@ -26,6 +29,7 @@ export function IngredientsFormAddIngredient({ updateData, ingredients }) {
       setIsInvalid(true);
     } else {
       handleAddItem();
+      setInputFocus();
     }
   };
 
@@ -53,6 +57,7 @@ export function IngredientsFormAddIngredient({ updateData, ingredients }) {
             onKeyDown={(event) => handleEnterKeyDown(event)}
             isInvalid={isInvalid}
             setIsInvalid={setIsInvalid}
+            inputRef={inputRef}
           />
         </Col>
       </Row>
